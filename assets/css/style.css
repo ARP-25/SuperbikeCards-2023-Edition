@@ -7,11 +7,6 @@ header {
     
 }
 
-nav {
-    position : absolute;
-    top: 20px;
-    left: 20px;
-}
 
 /* index instruction field */
 #instructions {
@@ -26,33 +21,65 @@ nav {
     
 }
 
-/* game-area */
-.game-area-container {
+/* card-area */
+#card-area-container {
     display: flex;
     justify-content: center;
-
 }
-.game-area {
+#card-area {
     width: 80vh;
-    height: 60vh;
+    height: 50vh;
     border: solid 1px white;
-
-    display:flex;
-    justify-content: space-between;
 }
-.player-card {
-    width: 30%;
+#player-card {
+    width: 35%;
     height: 70%;
+    min-width: 120px;
     border: solid 1px white;
+    border-radius: 3%;
+    float: left;
     position: relative;
     left: 20px;
-    top: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
 }
-.computer-card {
-    width: 30%;
+#computer-card {
+    width: 35%;
     height: 70%;
+    min-width: 120px;
     border: solid 1px white;
+    border-radius: 10px;
+    float: right;
     position: relative;
     right: 20px;
-    top: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+}
+img {
+    height: 100%;
+    width: 100%;
+}
+
+/* score area */
+#score-area-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#score-area {
+    width: 80vh;
+    height: 10vh;
+    border: solid 1px white;
+    display: flex;
+    justify-content: space-between;
+}
+#score-player {
+    position: relative;
+    left: 20px;
+}
+#score-computer {
+    right: 20px;
+    position: relative;
 }
