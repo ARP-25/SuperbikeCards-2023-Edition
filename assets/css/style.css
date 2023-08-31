@@ -1,0 +1,58 @@
+body {
+    background: rgb(51,51,51);
+}
+
+/* header */
+header {
+    
+}
+
+nav {
+    position : absolute;
+    top: 20px;
+    left: 20px;
+}
+
+/* index instruction field */
+#instructions {
+    
+}
+
+.align-center {
+    text-align : center;
+}
+
+#player-input {
+    
+}
+
+/* game-area */
+.game-area-container {
+    display: flex;
+    justify-content: center;
+
+}
+.game-area {
+    width: 80vh;
+    height: 60vh;
+    border: solid 1px white;
+
+    display:flex;
+    justify-content: space-between;
+}
+.player-card {
+    width: 30%;
+    height: 70%;
+    border: solid 1px white;
+    position: relative;
+    left: 20px;
+    top: 20px;
+}
+.computer-card {
+    width: 30%;
+    height: 70%;
+    border: solid 1px white;
+    position: relative;
+    right: 20px;
+    top: 20px;
+}
