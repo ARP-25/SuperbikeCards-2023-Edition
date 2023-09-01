@@ -1,6 +1,9 @@
+// when on index page execute following script
 if (document.getElementById("start-game")) {
     document.getElementById("start-game").addEventListener("click", function() {
+      // start-game element gets click event listener which checks if player name was entered  
       let playerInput = document.getElementById("player-input").value;
+      // if player name is entered we go to game.html
       if (playerInput !== "") {
         window.location.href = "game.html";
       } else {
@@ -21,7 +24,7 @@ let cardData = [{ name: "Ducati Paningale V1", image: "assets/images/ducati_pani
                 { name: "Ducati Paningale V9", image: "assets/images/ducati_paningale_v4.jpeg", power: 800, torque: 9, speed: 9, rpm: 9},
                 { name: "Ducati Paningale V10", image: "assets/images/ducati_paningale_v4.jpeg", power: 900, torque: 50, speed: 10, rpm: 10},]
 
-// implementing random sequence in cardData array
+// ensuring random sequence in cardData array
 shuffleCards(cardData);
 console.log(cardData);
 
@@ -30,6 +33,7 @@ let playerCards = [];
 let computerCards = [];
 let discardPile = [];
 let topCard;
+
 // distributing the cards evenly into the arrays
 for (let i = 0; i < cardData.length; i++) {
     if (i % 2 === 0) {
@@ -46,9 +50,11 @@ console.log(cycles);
 console.log(playerCards);
 console.log(computerCards);
 
-// after dom elements are loaded we add a click event listener to all elements with the class "comparable"
+// when on game page execute following script
 if (document.getElementById("card-area")) {
+    // after dom elements are loaded we add a click event listener to all elements with the class "comparable"
     document.addEventListener("DOMContentLoaded", function() {
+        showCard(playerCards[playerCards.length-1]);
         let statDivs = document.getElementsByClassName("comparable");
         // onclick eventlistener for all divs with the class of comparable
         for ( let i=0 ; i<statDivs.length ; i++ ) {
@@ -69,9 +75,7 @@ if (document.getElementById("card-area")) {
     });
 }
 
-
-
-/* Using Fisher Yates Shuffle Algorithm for random shuffle of the cardData array */
+// using fisher Yytes shuffle algorithm for random shuffle of the cardData array 
 function shuffleCards(cards) {
     for (let i = cards.length - 1; i > 0; i--) { 
         let j = Math.floor(Math.random() * (i + 1));
@@ -79,6 +83,8 @@ function shuffleCards(cards) {
     }
 }
 
+// compares the clicked stat in player card to computer card and pops of the top card of each
+// we need the pop off at the end because for the next round of comparing we target the next card via playerCards[playerCards.length-1] index
 function compare(stat) {
     if ( stat === "torque" ) {
         if (playerCards[playerCards.length-1].torque > computerCards[computerCards.length-1].torque) {
@@ -117,10 +123,12 @@ function compare(stat) {
     console.log(playerCards.length);
 }
 
+// incrementing score
 function incrementScore(scorer) {
     document.getElementById(scorer).innerText++;
 }
 
+// showing card
 function showCard(card) {
     // code to show image of card
     let bikeImg = document.createElement("img");
