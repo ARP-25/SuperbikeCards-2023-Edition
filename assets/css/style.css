@@ -127,11 +127,11 @@ img {
     display: flex;
     justify-content: space-between;
 }
-#score-player {
+#player-score {
     position: relative;
     left: 20px;
 }
-#score-computer {
+#computer-score {
     right: 20px;
     position: relative;
 }
