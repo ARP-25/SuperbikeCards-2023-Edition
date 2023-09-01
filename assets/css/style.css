@@ -7,7 +7,7 @@ body {
 
 /* header */
 header {
-    
+    margin-top: 200px;
 }
 
 
@@ -89,6 +89,14 @@ img {
     width: 100%;
 }
 
+#card-name-div {
+    border: solid 1px white;
+    height: 10%;
+    width: 90%;
+    position: relative;
+    left: 5%;
+    margin-top: 2.7%;
+}
 #card-img-div {
     border: solid 1px white;
     height: 35%;
@@ -126,4 +134,17 @@ img {
 #score-computer {
     right: 20px;
     position: relative;
+}
+footer {
+    text-decoration: none;
+    margin-top: 50px;
+}
+#nav-anchor {
+
+    text-decoration: inherit;
+}
+
+#test-div {
+    height: 100px;
+    width: 100px;
 }
