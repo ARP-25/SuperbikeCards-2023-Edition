@@ -75,6 +75,8 @@ if (document.getElementById("card-area")) {
             })
         }
         // oclick eventlistener for next card function ()
+        // hier soll erst die neue karte gezogen und somit angezeigt werden
+        // davor findet dieser prozess bei click auf stats statt, das soll dort entfernt werden und stattdessen nur die compare function und showComputerCard auslösen
     });
 }
 
