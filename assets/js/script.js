@@ -13,16 +13,16 @@ if (document.getElementById("start-game")) {
 }
 
 // creating a object collection for the cards
-let cardData = [{ name: "Ducati Paningale V1", image: "assets/images/ducati_paningale_v4.jpeg", power: 90, torque: 1, speed: 1, rpm: 1},
-                { name: "Ducati Paningale V2", image: "assets/images/ducati_paningale_v4.jpeg", power: 100, torque: 2, speed: 2, rpm: 2},
-                { name: "Ducati Paningale V3", image: "assets/images/ducati_paningale_v4.jpeg", power: 200, torque: 3, speed: 3, rpm: 3},
-                { name: "Ducati Paningale V4", image: "assets/images/ducati_paningale_v4.jpeg", power: 300, torque: 4, speed: 4, rpm: 4},
-                { name: "Ducati Paningale V5", image: "assets/images/ducati_paningale_v4.jpeg", power: 400, torque: 5, speed: 5, rpm: 5},
-                { name: "Ducati Paningale V6", image: "assets/images/ducati_paningale_v4.jpeg", power: 500, torque: 6, speed: 6, rpm: 6},
-                { name: "Ducati Paningale V7", image: "assets/images/ducati_paningale_v4.jpeg", power: 600, torque: 7, speed: 7, rpm: 7},
-                { name: "Ducati Paningale V8", image: "assets/images/ducati_paningale_v4.jpeg", power: 700, torque: 8, speed: 8, rpm: 8},
-                { name: "Ducati Paningale V9", image: "assets/images/ducati_paningale_v4.jpeg", power: 800, torque: 9, speed: 9, rpm: 9},
-                { name: "Ducati Paningale V10", image: "assets/images/ducati_paningale_v4.jpeg", power: 900, torque: 50, speed: 10, rpm: 10},]
+let cardData = [{ name: "Aprilia RSV4 1100", image: "assets/images/aprilia_rsv4.jpg", power: 217, torque: 122, speed: 2.7, rpm: 13600},
+                { name: "Ducati Panigale V2", image: "assets/images/ducati_panigale_v2.jpg", power: 155, torque: 104, speed: 3.2, rpm: 11500},
+                { name: "Ducati Panigale V4", image: "assets/images/ducati_panigale_v4.jpeg", power: 214, torque: 124, speed: 2.7, rpm: 15500},
+                { name: "Ducati Panigale V4R", image: "assets/images/ducati_panigale_v4_r.jpg", power: 234, torque: 119, speed: 2.6, rpm: 16500},
+                { name: "Yamaha YZF R1", image: "assets/images/yamaha_yzf_r1.png", power: 200, torque: 112, speed: 2.7, rpm: 14000},
+                { name: "Kawasaki Ninja", image: "assets/images/kawasaki_ninja_zx-10r.jpg", power:  203, torque: 115, speed: 2.8, rpm: 14000},
+                { name: "Suzuki GSX-R1000", image: "assets/images/suzuki_gsx-R1000.jpg", power: 202, torque: 117, speed: 2.7, rpm: 14500},
+                { name: "BMW S1000RR", image: "assets/images/bmw_s1000_RR.jpg", power: 205 , torque: 113, speed: 2.7, rpm: 14.500},
+                { name: "MV Agusta F4 RR", image: "assets/images/MV_Agusta_F4_RR.jpg", power:  201, torque: 111 , speed: 2.8, rpm: 13450},
+                { name: "Honda CBR1000RR FB", image: "assets/images/honda_cbr1000rr_fireblade.jpg", power: 214, torque: 116, speed: 2.8, rpm: 13000},]
 
 // ensuring random sequence in cardData array
 shuffleCards(cardData);
@@ -33,6 +33,7 @@ let playerCards = [];
 let computerCards = [];
 let discardPile = [];
 let topCard;
+let topCardC;
 
 // distributing the cards evenly into the arrays
 for (let i = 0; i < cardData.length; i++) {
@@ -44,7 +45,7 @@ for (let i = 0; i < cardData.length; i++) {
 }
 
 // game cycles depending on card amount
-let cycles = cardData.length/2;
+let cycles = (cardData.length/2)-1;
 console.log(cycles);
 
 console.log(playerCards);
@@ -61,17 +62,19 @@ if (document.getElementById("card-area")) {
             statDivs[i].addEventListener("click", function() {
                 alert("div got clicked");
                 let stat = this.getAttribute("stat-type");
+                console.log(cycles);
                 if( cycles !== 0 ){
                     compare(stat);
                     topCard = playerCards[playerCards.length-1];
+                    topCardC = computerCards[playerCards.length-1];
                     showCard(topCard);
-                    console.log(topCard.name);
                     cycles--;
                 } else {
                     alert("game has ended");
                 }
             })
         }
+        // oclick eventlistener for next card function ()
     });
 }
 
@@ -120,7 +123,7 @@ function compare(stat) {
         }
     } 
     discardPile = playerCards.pop();
-    console.log(playerCards.length);
+    discardPile = computerCards.pop();
 }
 
 // incrementing score
@@ -144,4 +147,22 @@ function showCard(card) {
     document.getElementById("bike-rpm").innerText = card.rpm;
 }
 
+// show computer card
+function showComputerCard(card) {
+    document.getElementById("computer-card").innerHTML = '<div id="card-name-div" class="card-name-style"><p><span id="bike-name-computer">Ducati</span></p></div><div id="card-img-div-computer" class="card-img-style"></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="power"><p>Power: <span id="bike-power-computer">0</span> HP</p></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="torque"><p>Torque: <span id="bike-torque-computer">0</span> Nm</p></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="speed"><p>0-100 km/h: <span id="bike-speed-computer">0</span> s</p></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="rpm"><p>max RPM: <span id="bike-rpm-computer">0</span> U/min</p></div>'
+
+    // code to show image of card
+    let bikeImg = document.createElement("img");
+    bikeImg.src = card.image; 
+    bikeImg.alt = card.name; 
+    document.getElementById("card-img-div-computer").appendChild(bikeImg);
+    // code to show all stats of the card
+    document.getElementById("bike-name-computer").innerText = card.name;
+       
+    //document.getElementById("card-img-div-computer").removeChild(document.getElementById("card-img-div-computer").firstChild);                  
+    document.getElementById("bike-power-computer").innerText = card.power;
+    document.getElementById("bike-torque-computer").innerText = card.torque;
+    document.getElementById("bike-speed-computer").innerText = card.speed;
+    document.getElementById("bike-rpm-computer").innerText = card.rpm;
+}
 

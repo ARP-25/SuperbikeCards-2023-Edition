@@ -61,7 +61,7 @@ header {
 #player-card {
     width: 240px;
     height: 400px;
-    border: solid 1px white;
+    border: solid 3px white;
     border-radius: 10px;
     float: left;
     position: relative;
@@ -69,13 +69,13 @@ header {
     top: 50%;
     transform: translateY(-50%);
     overflow: hidden;
-    align-items: center;
+    background-color: darkcyan;
 }
 #computer-card {
     width: 240px;
     height: 400px;
     min-width: 120px;
-    border: solid 1px white;
+    border: solid 3px white;
     border-radius: 10px;
     float: right;
     position: relative;
@@ -83,35 +83,39 @@ header {
     top: 50%;
     transform: translateY(-50%);
     overflow: hidden;
+    background-color: darkcyan;
 }
 img {
     height: 100%;
     width: 100%;
 }
 
-#card-name-div {
-    border: solid 1px white;
+.card-name-style {
+    border: solid 1px lightgrey;
     height: 10%;
     width: 90%;
     position: relative;
     left: 5%;
     margin-top: 2.7%;
+    background-color: lightgrey;
 }
-#card-img-div {
-    border: solid 1px white;
+.card-img-style {
+    border: solid 1px lightgrey;
     height: 35%;
     width: 90%;
     position: relative;
     left: 5%;
     margin-top: 2.7%;
+    background-color: lightgrey;
 }
-#card-stat-div {
-    border: solid 1px white;
+.card-stat-style {
+    border: solid 1px lightgrey;
     height: 10%;
     width: 90%;
     position: relative;
     left: 5%;
     margin-top: 2.7%;
+    background-color: lightgrey;
 }
 
 /* score area */
