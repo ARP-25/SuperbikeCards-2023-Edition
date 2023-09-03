@@ -94,6 +94,30 @@ if (document.getElementById("card-area")) {
             }
             console.log(draftRounds);
         })
+
+        
+        // Das Span-Element mit der ID "score-count-player" auswählen
+        let scoreCount = document.getElementsByClassName('score');
+        // add even listener for each score span
+        for ( let score of scoreCount ) {
+            score.addEventListener('DOMSubtreeModified', function() {
+                // call the value of each span element and parse it to int
+                let actualValue = parseInt(score.textContent);
+                // check if value is 3
+                if ( actualValue === 3 ) {
+                    // if value of player score is 3
+                    if (score.id === "score-count-player") {
+                        console.log("The winner is Player");
+                        alert ("The winner is Player!");
+                    }
+                    // if value of computer score is 3
+                    if (score.id === "score-count-computer") {
+                        console.log("The winner is Computer");
+                        alert ("The winner is Player!");
+                    }
+                }
+            });
+        }
     });
 }
 
