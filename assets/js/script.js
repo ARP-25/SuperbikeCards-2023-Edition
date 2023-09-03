@@ -45,38 +45,55 @@ for (let i = 0; i < cardData.length; i++) {
 }
 
 // game cycles depending on card amount
-let cycles = (cardData.length/2)-1;
-console.log(cycles);
+let compareRounds = (cardData.length/2);
+let draftRounds = (cardData.length/2);
 
+//test
 console.log(playerCards);
 console.log(computerCards);
 
 // when on game page execute following script
 if (document.getElementById("card-area")) {
+
     // after dom elements are loaded we add a click event listener to all elements with the class "comparable"
     document.addEventListener("DOMContentLoaded", function() {
         showCard(playerCards[playerCards.length-1]);
         let statDivs = document.getElementsByClassName("comparable");
+
         // onclick eventlistener for all divs with the class of comparable
         for ( let i=0 ; i<statDivs.length ; i++ ) {
             statDivs[i].addEventListener("click", function() {
                 alert("div got clicked");
                 let stat = this.getAttribute("stat-type");
-                console.log(cycles);
-                if( cycles !== 0 ){
+                if( (compareRounds !== 0) && (compareRounds==draftRounds) ){
                     compare(stat);
-                    topCard = playerCards[playerCards.length-1];
-                    topCardC = computerCards[playerCards.length-1];
-                    showCard(topCard);
-                    cycles--;
-                } else {
-                    alert("game has ended");
+                } else if (compareRounds == 0) {
+                    alert("The game has ended!")
+                }
+                else {
+                    alert("You need to draft a new Card before you can compare again");
                 }
             })
         }
-        // oclick eventlistener for next card function ()
-        // hier soll erst die neue karte gezogen und somit angezeigt werden
-        // davor findet dieser prozess bei click auf stats statt, das soll dort entfernt werden und stattdessen nur die compare function und showComputerCard auslösen
+
+        // onclick eventlistener for draftcardbutton
+        let draftCardButton = document.getElementById("draft-next-card");
+        draftCardButton.addEventListener("click", function() {
+            // player will be able to draft new card and finish one game cycle when he compared his card
+            if( (draftRounds !== 1) && (compareRounds<draftRounds) ) {   
+                topCard = playerCards[playerCards.length-1];
+                topCardC = computerCards[playerCards.length-1];
+                showCard(topCard);
+                hideComputerCard();
+                draftRounds--;
+            } else if (draftRounds == 1) {
+                alert("The game has ended!");
+            }
+            else {
+                alert("You need to compare your Card first before you can go to your next card!");
+            }
+            console.log(draftRounds);
+        })
     });
 }
 
@@ -92,40 +109,82 @@ function shuffleCards(cards) {
 // we need the pop off at the end because for the next round of comparing we target the next card via playerCards[playerCards.length-1] index
 function compare(stat) {
     if ( stat === "torque" ) {
-        if (playerCards[playerCards.length-1].torque > computerCards[computerCards.length-1].torque) {
+        if ( playerCards[playerCards.length-1].torque > computerCards[computerCards.length-1].torque ) {
             alert("Player win");
             incrementScore("score-count-player");
-        } else {
+            showComputerCard(computerCards[computerCards.length-1]);
+            discardPile = playerCards.pop();
+            discardPile = computerCards.pop();
+            compareRounds--;
+        } else if ( playerCards[playerCards.length-1].torque == computerCards[computerCards.length-1].torque ) {
+            alert("Both cards have got the same Torque, please choose another stat to compare!");
+        }
+        else { 
             alert("Computer win");
             incrementScore("score-count-computer");
+            showComputerCard(computerCards[computerCards.length-1]);
+            discardPile = playerCards.pop();
+            discardPile = computerCards.pop();
+            compareRounds--;
         }
     } else if ( stat === "power") {
         if (playerCards[playerCards.length-1].power > computerCards[computerCards.length-1].power) {
             alert("Player win");
             incrementScore("score-count-player");
-        } else {
+            showComputerCard(computerCards[computerCards.length-1]);
+            discardPile = playerCards.pop();
+            discardPile = computerCards.pop();
+            compareRounds--;
+        } else if ( playerCards[playerCards.length-1].power == computerCards[computerCards.length-1].power ) {
+            alert("Both cards have got the same Power, please choose another stat to compare!");
+        } 
+        else {
             alert("Computer win");
             incrementScore("score-count-computer");
+            showComputerCard(computerCards[computerCards.length-1]);
+            discardPile = playerCards.pop();
+            discardPile = computerCards.pop();
+            compareRounds--;
         }
     } else if ( stat === "speed") {
         if (playerCards[playerCards.length-1].speed > computerCards[computerCards.length-1].speed) {
             alert("Player win");
             incrementScore("score-count-player");
-        } else {
+            showComputerCard(computerCards[computerCards.length-1]);
+            discardPile = playerCards.pop();
+            discardPile = computerCards.pop();
+            compareRounds--;
+        } else if ( playerCards[playerCards.length-1].speed == computerCards[computerCards.length-1].speed ) {
+            alert("Both cards have got the same Speed, please choose another stat to compare!");
+        } 
+         else {
             alert("Computer win");
             incrementScore("score-count-computer");
+            showComputerCard(computerCards[computerCards.length-1]);
+            discardPile = playerCards.pop();
+            discardPile = computerCards.pop();
+            compareRounds--;
         }
     } else if ( stat === "rpm") {
         if (playerCards[playerCards.length-1].rpm > computerCards[computerCards.length-1].rpm) {
             alert("Player win");
             incrementScore("score-count-player");
-        } else {
+            showComputerCard(computerCards[computerCards.length-1]);
+            discardPile = playerCards.pop();
+            discardPile = computerCards.pop();
+            compareRounds--;
+        } else if ( playerCards[playerCards.length-1].rpm == computerCards[computerCards.length-1].rpm ) {
+            alert("Both cards have got the same rpm, please choose another stat to compare!");
+        }
+         else {
             alert("Computer win");
             incrementScore("score-count-computer");
+            showComputerCard(computerCards[computerCards.length-1]);
+            discardPile = playerCards.pop();
+            discardPile = computerCards.pop();
+            compareRounds--;
         }
     } 
-    discardPile = playerCards.pop();
-    discardPile = computerCards.pop();
 }
 
 // incrementing score
@@ -168,3 +227,6 @@ function showComputerCard(card) {
     document.getElementById("bike-rpm-computer").innerText = card.rpm;
 }
 
+function hideComputerCard() {
+    document.getElementById("computer-card").innerHTML = '<img src="/assets/images/card_backside.jpg"></img>';
+}
