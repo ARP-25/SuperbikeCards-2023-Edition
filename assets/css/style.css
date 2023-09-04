@@ -7,7 +7,8 @@ body {
 
 /* header */
 header {
-    margin-top: 200px;
+    margin-top: 100px;
+    color:aqua;
 }
 
 
@@ -20,7 +21,7 @@ header {
     text-align : center;
 }
 #instructions {
-    width: 280px;
+    width: 600px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -33,19 +34,19 @@ header {
 #game-button:hover {
     transition: color 0,4s linear;
 }
-#start-game {
+.button {
     padding: 10px 20px;
-    margin-top: 30px;
+    margin-top: 20px;
     font-family: Orbitron, sans-serif;
+    border-radius: 5px;
     color:aqua;
     text-decoration: inherit;
     background: transparent;
     cursor: pointer;
-    overflow: hidden;
     transition: transform .2s;
 }
-#start-game:hover {
-    transform: scale(1.5);
+.button:hover {
+    transform: scale(1.2);
 }
 
 /* card-area */
@@ -56,7 +57,6 @@ header {
 #card-area {
     width: 700px;
     height: 440px;
-    border: solid 1px white;
 }
 #player-card {
     width: 240px;
@@ -74,7 +74,6 @@ header {
 #computer-card {
     width: 240px;
     height: 400px;
-    min-width: 120px;
     border: solid 3px white;
     border-radius: 10px;
     float: right;
@@ -117,6 +116,16 @@ img {
     margin-top: 2.7%;
     background-color: lightgrey;
 }
+.comparable {
+    transition: transform .2s;
+}
+.comparable:hover {
+    transform: scale(1.05);
+    background-color: red;
+}
+.red-highlight {
+    background-color: red;
+}
 
 /* button area */
 #button-area-container {
@@ -126,17 +135,10 @@ img {
 }
 #button-area {
     width: 700px;
-    height: 100px;
-    border: solid 1px white;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-#draft-next-card {
-    padding: 10px 20px;
-    margin-top: 30px;
-    font-family: Orbitron, sans-serif;
-
 }
 
 /* score area */
@@ -148,27 +150,29 @@ img {
 #score-area {
     width: 700px;
     height: 100px;
-    border: solid 1px white;
     display: flex;
     justify-content: space-between;
 }
 #player-score {
     position: relative;
     left: 20px;
+    color: aqua;
 }
 #computer-score {
     right: 20px;
     position: relative;
+    color: aqua;
 }
 
 
 footer {
     text-decoration: none;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 #nav-anchor {
-
     text-decoration: inherit;
+    color: aqua;
+    border: 1px aqua solid;
 }
 
 #test-div {
