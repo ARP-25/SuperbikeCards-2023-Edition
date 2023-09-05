@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-    <html lang="en">
-        
+    <html lang="en">       
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="superbike, bike, cardgame, card, game">
         <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <title>Superbike Cards</title>
     </head>
 
     <body>
-
         <header class="align-center">
             <h1>Superbike Cards</h1>
+            <h2 id="edition">2023 Edition</h2>
         </header>
 
         <section id="card-area-container">
@@ -24,24 +24,24 @@
                     <div id="card-img-div" class="card-img-style">
                         
                     </div>
-                    <div id="card-stat-div" class="comparable card-stat-style" stat-type="power">
-                        <p>Power: <span id="bike-power">0</span> HP</p>
+                    <div class="comparable card-stat-style" data-stat-type="power">
+                        <p>Power:</p> <span id="bike-power">0</span><p> HP</p>
                     </div>
-                    <div id="card-stat-div" class="comparable card-stat-style" stat-type="torque">
-                        <p>Torque: <span id="bike-torque">0</span> Nm</p>
+                    <div class="comparable card-stat-style" data-stat-type="torque">
+                        <p>Torque:</p> <span id="bike-torque">0</span><p> Nm</p>
                     </div>
-                    <div id="card-stat-div" class="comparable card-stat-style" stat-type="speed">
-                        <p>0-100 km/h: <span id="bike-speed">0</span> s</p>
+                    <div class="comparable card-stat-style" data-stat-type="speed">
+                        <p>0-100 km/h:</p> <span id="bike-speed">0</span><p> s</p>
                     </div>
-                    <div id="card-stat-div" class="comparable card-stat-style" stat-type="rpm">
-                        <p>max RPM: <span id="bike-rpm">0</span> U/min</p>
+                    <div class="comparable card-stat-style" data-stat-type="rpm">
+                        <p>max RPM:</p> </p><span id="bike-rpm">0</span><p> U/min</p>
                     </div>
                 </div>
-                
+                <div id="versus">VS</div>
                 <div id="computer-card">
-                    <img src="assets/images/card_backside.jpg">
+                    <img src="assets/images/card_backside.jpg" alt="Backside of the Computer card">
                 </div>
-            <div>
+            </div>
         </section>
 
         <section id="button-area-container">
@@ -62,14 +62,10 @@
             </div>
         </section>
 
-
-
         <footer class="align-center">
-            <a id="nav-anchor" href="index.html">Go back to Start Page</a>
+            <a id="nav-anchor" href="index.html"><i class="fa-solid fa-rotate-left"></i> Return to Start Page</a>
         </footer>
 
         <script src="assets/js/script.js"></script>
-
     </body>
-
 </html>

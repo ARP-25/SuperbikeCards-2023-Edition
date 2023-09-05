@@ -1,15 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Orbitron:wght@700&display=swap');
 
 /* body */
 body {
-    background: rgb(51,51,51);
+    background: black;
     font-family: Orbitron, sans-serif;
 }
 
 /* header */
 header {
-    margin-top: 100px;
+    margin-top: 60px;
     color:aqua;
+}
+#edition {
+    font-family: Bangers, sans-serif;
+    position: relative;
+    top: -25px;
+    color: #FF6600;
+    left: 130px;
+    font-style: oblique;
+    opacity: 0; 
+    transition: opacity 5s; 
+}
+#edition.show {
+    opacity: 1; 
 }
 
 /* instruction field */
@@ -21,6 +34,8 @@ header {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    background-color: rgb(51,51,51);
+    padding-bottom: 3px;
 }
 #player-input {
     padding: 10px 20px;
@@ -37,7 +52,7 @@ header {
     border-radius: 5px;
     color:aqua;
     text-decoration: inherit;
-    background: transparent;
+    background: rgb(51,51,51);
     cursor: pointer;
     transition: transform .2s;
 }
@@ -52,7 +67,9 @@ header {
 }
 #card-area {
     width: 700px;
-    height: 440px;
+    min-width: 300px;
+    height: 490px;
+    background-color: rgb(51,51,51);
 }
 #player-card {
     width: 240px;
@@ -66,6 +83,15 @@ header {
     transform: translateY(-50%);
     overflow: hidden;
     background-color: darkcyan;
+}
+#versus {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 380px;
+    font-family: Bangers, sans-serif;
+    font-size: 500%;
+    color: #FF6600;
 }
 #computer-card {
     width: 240px;
@@ -116,10 +142,35 @@ img {
 }
 .comparable:hover {
     transform: scale(1.05);
-    background-color: red;
+    background-color: #FF6600;
 }
 .red-highlight {
-    background-color: red;
+    background-color: #FF6600;
+}
+.card-name-style {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+.comparable.card-stat-style {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+.comparable.card-stat-style p:first-child {
+    text-align: left;
+    flex: 1;
+    padding-left:5px;
+}
+.comparable.card-stat-style p:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 5px;
+}
+.comparable.card-stat-style span {
+    padding-right:3px;
 }
 
 /* button area */
@@ -130,10 +181,15 @@ img {
 }
 #button-area {
     width: 700px;
-    height: 40px;
+    min-width: 300px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(51,51,51);
+}
+#draft-next-card {
+    background: black;
 }
 
 /* score area */
@@ -144,36 +200,45 @@ img {
 }
 #score-area {
     width: 700px;
-    height: 100px;
+    min-width: 300px;
+    height: 70px;
     display: flex;
     justify-content: space-between;
+    background-color: rgb(51,51,51);
 }
 #player-score {
     position: relative;
     left: 20px;
-    color: aqua;
+    color: #FF6600;
 }
 #computer-score {
     right: 20px;
     position: relative;
-    color: aqua;
+    color: #FF6600;
 }
 
 /* footer */
 footer {
     text-decoration: none;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 #nav-anchor {
+    padding: 5px;
     text-decoration: inherit;
     color: aqua;
     border: 1px aqua solid;
+    background: rgb(51,51,51);
 }
 
 @media (max-width: 640px) {
     /* header */
     header {
-        margin-top: 10px;
+        margin: 10px 0 -40px;
+        font-size: 75%;
+    }
+    #edition {
+        margin-top: 20px;
+        left: 90px;
     }
 
     /* instructions */
@@ -184,7 +249,8 @@ footer {
     /* card-area */
     #card-area {
         width: 350px;
-        height: 220px;
+        height: 250px;
+        margin-top: 20px;
     }
     #player-card {
         width: 120px;
@@ -208,6 +274,10 @@ footer {
     .card-stat-style {
         margin-top: 2.2%;
         font-size: 50%; 
+    }
+    #versus {
+        top: 200px;
+        font-size: 100%;
     }
 
     /* button area */
@@ -233,8 +303,6 @@ footer {
         margin-top: 20px;
     }
     #nav-anchor {
-        text-decoration: inherit;
-        color: aqua;
-        border: 1px aqua solid;
+        font-size: 50%;
     }
 }

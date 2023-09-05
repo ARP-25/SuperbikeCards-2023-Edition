@@ -2,6 +2,11 @@
 // after dom elements are loaded we start to manipulate the elements
 document.addEventListener("DOMContentLoaded", function() {
 
+    // reveal elemend id="edition"
+    setTimeout(function() {
+        document.getElementById("edition").classList.add("show");
+    }, 1000); 
+        
     // when on index page execute following code in this function
     if (document.getElementById("start-game")) {
         document.getElementById("start-game").addEventListener("click", function() {
@@ -69,6 +74,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // when on game page execute following script
     if (document.getElementById("card-area")) {
+        
+        // reveal elemend id="edition"
+        setTimeout(function() {
+        document.getElementById("edition").classList.add("show");
+        }, 1000); 
 
         // add actual playername to score span
         let playerName = localStorage.getItem('playerName');
@@ -81,10 +91,10 @@ document.addEventListener("DOMContentLoaded", function() {
         let statDivs = document.getElementsByClassName("comparable");
         for ( let i=0 ; i<statDivs.length ; i++ ) {
             statDivs[i].addEventListener("click", function() {                
-                let stat = this.getAttribute("stat-type");
+                let stat = this.getAttribute("data-stat-type");
                 recentComparedStat = stat;
                 if( (compareRounds !== 0) && (compareRounds === draftRounds) ){
-                    alert("You chose "+ this.getAttribute("stat-type") + " to compare!");
+                    alert("You chose "+ this.getAttribute("data-stat-type") + " to compare!");
                     compare(stat, playerName);
                 } else if (compareRounds === 0) {
                     alert("The game has ended! Click 'Go back to start Page' to start a new game");
@@ -226,7 +236,7 @@ function showCard(card) {
 // show computer card
 function showComputerCard(card) {
     // manipulating computer-card div
-    document.getElementById("computer-card").innerHTML = '<div id="card-name-div" class="card-name-style"><p><span id="bike-name-computer">Ducati</span></p></div><div id="card-img-div-computer" class="card-img-style"></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="power"><p>Power: <span id="bike-power-computer">0</span> HP</p></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="torque"><p>Torque: <span id="bike-torque-computer">0</span> Nm</p></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="speed"><p>0-100 km/h: <span id="bike-speed-computer">0</span> s</p></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="rpm"><p>max RPM: <span id="bike-rpm-computer">0</span> U/min</p></div>';
+    document.getElementById("computer-card").innerHTML = '<div id="card-name-div" class="card-name-style"><p><span id="bike-name-computer">Ducati</span></p></div><div id="card-img-div-computer" class="card-img-style"></div><div class="comparable card-stat-style" data-stat-type="power"><p>Power:</p> <span id="bike-power-computer">0</span><p> HP</p></div><div class="comparable card-stat-style" data-stat-type="torque"><p>Torque:</p> <span id="bike-torque-computer">0</span><p> Nm</p></div><div class="comparable card-stat-style" data-stat-type="speed"><p>0-100 km/h:</p> <span id="bike-speed-computer">0</span><p> s</p></div><div class="comparable card-stat-style" data-stat-type="rpm"><p>max RPM:</p> <span id="bike-rpm-computer">0</span><p> U/min</p></div>';
     // code to show image of card
     let bikeImg = document.createElement("img");
     bikeImg.src = card.image; 
@@ -248,7 +258,7 @@ function hideComputerCard() {
 
 // highlighting the compared stats
 function highlightComparedStats(stat) {
-    let statDivs = document.querySelectorAll('[stat-type="'+stat+'"]');
+    let statDivs = document.querySelectorAll('[data-stat-type="'+stat+'"]');
     for (let comparedStat of statDivs) {
         comparedStat.classList.add('red-highlight');
     }
@@ -256,7 +266,7 @@ function highlightComparedStats(stat) {
 
 // unhighlighting the compared stats
 function unhighlightingComparedStats(stat) {
-    let statDivs = document.querySelectorAll('[stat-type="'+stat+'"]');
+    let statDivs = document.querySelectorAll('[data-stat-type="'+stat+'"]');
     for (let comparedStat of statDivs) {
         comparedStat.classList.remove('red-highlight');
     }
