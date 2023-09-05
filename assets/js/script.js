@@ -156,46 +156,46 @@ function shuffleCards(cards) {
 function compare(stat, playerName) {
     if ( stat === "torque" ) {
         if ( playerCards[playerCards.length-1].torque > computerCards[computerCards.length-1].torque ) {           
-            alert(playerName+ " win round");
+            alert(playerName+ " wins round");
             wrapper("score-count-player", stat);
         } else if ( playerCards[playerCards.length-1].torque == computerCards[computerCards.length-1].torque ) {
             alert("Both cards have got the same Torque, please choose another stat to compare!");
         }
         else { 
-            alert("Computer win round");
+            alert("Computer wins round");
             wrapper("score-count-computer", stat);
         }
     } else if ( stat === "power") {
         if (playerCards[playerCards.length-1].power > computerCards[computerCards.length-1].power) {
-            alert(playerName+ " win round");
+            alert(playerName+ " wins round");
             wrapper("score-count-player", stat);
         } else if ( playerCards[playerCards.length-1].power == computerCards[computerCards.length-1].power ) {
             alert("Both cards have got the same Power, please choose another stat to compare!");
         } 
         else {
-            alert("Computer win round");
+            alert("Computer wins round");
             wrapper("score-count-computer", stat);
         }
     } else if ( stat === "speed") {
         if (playerCards[playerCards.length-1].speed < computerCards[computerCards.length-1].speed) {
-            alert(playerName+ " win round");
+            alert(playerName+ " wins round");
             wrapper("score-count-player", stat);
         } else if ( playerCards[playerCards.length-1].speed == computerCards[computerCards.length-1].speed ) {
             alert("Both cards have got the same Speed, please choose another stat to compare!");
         } 
          else {
-            alert("Computer win round");
+            alert("Computer wins round");
             wrapper("score-count-computer", stat);
         }
     } else if ( stat === "rpm") {
         if (playerCards[playerCards.length-1].rpm > computerCards[computerCards.length-1].rpm) {
-            alert(playerName+ " win round");
+            alert(playerName+ " wins round");
             wrapper("score-count-player", stat);
         } else if ( playerCards[playerCards.length-1].rpm == computerCards[computerCards.length-1].rpm ) {
             alert("Both cards have got the same rpm, please choose another stat to compare!");
         }
          else {
-            alert("Computer win round");
+            alert("Computer wins round");
             wrapper("score-count-computer", stat);
         }
     } 
@@ -242,6 +242,7 @@ function showComputerCard(card) {
 // hiding computer card
 function hideComputerCard() {
     document.getElementById("computer-card").innerHTML = '<img src="/assets/images/card_backside.jpg"></img>';
+    document.getElementById("computer-card").alt = "Backside of the Computer Card";
 }
 
 // highlighting the compared stats
