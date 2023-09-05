@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 // after dom elements are loaded we start to manipulate the elements
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -86,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     alert("You chose "+ this.getAttribute("stat-type") + " to compare!");
                     compare(stat, playerName);
                 } else if (compareRounds === 0) {
-                    alert("The game has ended! Click 'Go back to start Page' to start a new game")
+                    alert("The game has ended! Click 'Go back to start Page' to start a new game");
                 }
                 else {
                     alert("You need to draft a new Card before you can compare again");
@@ -137,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("You need to compare your Card first before you can draft your next card!");
             }
 
-        })       
+        });       
     }
 });
 
@@ -225,7 +226,7 @@ function showCard(card) {
 // show computer card
 function showComputerCard(card) {
     // manipulating computer-card div
-    document.getElementById("computer-card").innerHTML = '<div id="card-name-div" class="card-name-style"><p><span id="bike-name-computer">Ducati</span></p></div><div id="card-img-div-computer" class="card-img-style"></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="power"><p>Power: <span id="bike-power-computer">0</span> HP</p></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="torque"><p>Torque: <span id="bike-torque-computer">0</span> Nm</p></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="speed"><p>0-100 km/h: <span id="bike-speed-computer">0</span> s</p></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="rpm"><p>max RPM: <span id="bike-rpm-computer">0</span> U/min</p></div>'
+    document.getElementById("computer-card").innerHTML = '<div id="card-name-div" class="card-name-style"><p><span id="bike-name-computer">Ducati</span></p></div><div id="card-img-div-computer" class="card-img-style"></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="power"><p>Power: <span id="bike-power-computer">0</span> HP</p></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="torque"><p>Torque: <span id="bike-torque-computer">0</span> Nm</p></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="speed"><p>0-100 km/h: <span id="bike-speed-computer">0</span> s</p></div><div id="card-stat-div" class="comparable card-stat-style" stat-type="rpm"><p>max RPM: <span id="bike-rpm-computer">0</span> U/min</p></div>';
     // code to show image of card
     let bikeImg = document.createElement("img");
     bikeImg.src = card.image; 
