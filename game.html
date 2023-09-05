@@ -1,73 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Superbike Cards</title>
-</head>
+    <html lang="en">
+        
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="superbike, bike, cardgame, card, game">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <title>Superbike Cards</title>
+    </head>
 
-<body>
+    <body>
 
-    <header class="align-center">
-        <h1>Superbike Cards</h1>
-    </header>
+        <header class="align-center">
+            <h1>Superbike Cards</h1>
+        </header>
 
-    <section id="card-area-container">
-        <div id="card-area"> 
-            <div id="player-card">
-                <div id="card-name-div" class="card-name-style">
-                    <p><span id="bike-name">Ducati</span></p>
+        <section id="card-area-container">
+            <div id="card-area"> 
+                <div id="player-card">
+                    <div id="card-name-div" class="card-name-style">
+                        <p><span id="bike-name">Ducati</span></p>
+                    </div>
+                    <div id="card-img-div" class="card-img-style">
+                        
+                    </div>
+                    <div id="card-stat-div" class="comparable card-stat-style" stat-type="power">
+                        <p>Power: <span id="bike-power">0</span> HP</p>
+                    </div>
+                    <div id="card-stat-div" class="comparable card-stat-style" stat-type="torque">
+                        <p>Torque: <span id="bike-torque">0</span> Nm</p>
+                    </div>
+                    <div id="card-stat-div" class="comparable card-stat-style" stat-type="speed">
+                        <p>0-100 km/h: <span id="bike-speed">0</span> s</p>
+                    </div>
+                    <div id="card-stat-div" class="comparable card-stat-style" stat-type="rpm">
+                        <p>max RPM: <span id="bike-rpm">0</span> U/min</p>
+                    </div>
                 </div>
-                <div id="card-img-div" class="card-img-style">
-                    
+                
+                <div id="computer-card">
+                    <img src="assets/images/card_backside.jpg">
                 </div>
-                <div id="card-stat-div" class="comparable card-stat-style" stat-type="power">
-                    <p>Power: <span id="bike-power">0</span> HP</p>
-                </div>
-                <div id="card-stat-div" class="comparable card-stat-style" stat-type="torque">
-                    <p>Torque: <span id="bike-torque">0</span> Nm</p>
-                </div>
-                <div id="card-stat-div" class="comparable card-stat-style" stat-type="speed">
-                    <p>0-100 km/h: <span id="bike-speed">0</span> s</p>
-                </div>
-                <div id="card-stat-div" class="comparable card-stat-style" stat-type="rpm">
-                    <p>max RPM: <span id="bike-rpm">0</span> U/min</p>
-                </div>
+            <div>
+        </section>
+
+        <section id="button-area-container">
+            <div id="button-area">
+                <button id="draft-next-card" class="button">Draft next Card!</button>
             </div>
-            
-            <div id="computer-card">
-                <img src="assets/images/card_backside.jpg">
+        </section>
+
+        <section id="score-area-container">
+            <div id="score-area">
+                <p id="player-score">
+                    Score Player: <span id="score-count-player" class="score">0</span>
+                </p>
+                <p id="player-name"></p>
+                <p id="computer-score">
+                    Score Computer: <span id="score-count-computer" class="score">0</span>
+                </p>
             </div>
-        <div>
-    </section>
-
-    <section id="button-area-container">
-        <div id="button-area">
-            <button id="draft-next-card" class="button">Draft next Card!</button>
-        </div>
-    </section>
-
-    <section id="score-area-container">
-        <div id="score-area">
-            <p id="player-score">
-                Score Player: <span id="score-count-player" class="score">0</span>
-            </p>
-            <p id="player-name"></p>
-            <p id="computer-score">
-                Score Computer: <span id="score-count-computer" class="score">0</span>
-            </p>
-        </div>
-    </section>
+        </section>
 
 
 
-    <footer class="align-center">
-        <a id="nav-anchor" href="index.html">Go back to Start Page</a>
-    </footer>
+        <footer class="align-center">
+            <a id="nav-anchor" href="index.html">Go back to Start Page</a>
+        </footer>
 
-    <script src="assets/js/script.js"></script>
+        <script src="assets/js/script.js"></script>
 
-</body>
+    </body>
 
 </html>
