@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
+/* body */
 body {
     background: rgb(51,51,51);
     font-family: Orbitron, sans-serif;
@@ -12,11 +13,7 @@ header {
 }
 
 
-/* index instruction field */
-#instructions {
-    
-}
-
+/* instruction field */
 .align-center {
     text-align : center;
 }
@@ -88,7 +85,6 @@ img {
     height: 100%;
     width: 100%;
 }
-
 .card-name-style {
     border: solid 1px lightgrey;
     height: 10%;
@@ -164,7 +160,7 @@ img {
     color: aqua;
 }
 
-
+/* footer */
 footer {
     text-decoration: none;
     margin-top: 20px;
@@ -175,7 +171,84 @@ footer {
     border: 1px aqua solid;
 }
 
-#test-div {
-    height: 100px;
-    width: 100px;
+@media (max-width: 640px) {
+    /* header */
+    header {
+        margin-top: 10px;
+    }
+
+    /* instructions */
+    #instructions {
+        width: 280px;
+    }
+
+    /* card-area */
+    #card-area {
+        width: 350px;
+        height: 220px;
+    }
+    #player-card {
+        width: 120px;
+        height: 200px;
+        border: solid 1.5px white;
+        border-radius: 5px;
+    }
+    #computer-card {
+        width: 120px;
+        height: 200px;
+        border: solid 1.5px white;
+        border-radius: 5px;
+    }
+    .card-name-style {
+        margin-top: 2.1%;
+        font-size: 50%;       
+    }
+    .card-img-style {
+        margin-top: 2.1%;
+    }
+    .card-stat-style {
+        margin-top: 2.2%;
+        font-size: 50%; 
+    }
+
+    /* button area */
+    #button-area {
+        width: 350px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #draft-next-card {
+        font-size: 50%;
+        margin-top: 5px;
+    }
+
+    /* score-area */
+    #score-area {
+        width: 350px;
+        height: 40px;
+        font-size: 50%;
+    }
+    #player-score {
+        position: relative;
+        left: 20px;
+        color: aqua;
+    }
+    #computer-score {
+        right: 20px;
+        position: relative;
+        color: aqua;
+    }
+
+    /* footer */
+    footer {
+        text-decoration: none;
+        margin-top: 20px;
+    }
+    #nav-anchor {
+        text-decoration: inherit;
+        color: aqua;
+        border: 1px aqua solid;
+    }
 }
