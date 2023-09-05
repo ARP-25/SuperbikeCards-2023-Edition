@@ -236,7 +236,7 @@ function showCard(card) {
 // show computer card
 function showComputerCard(card) {
     // manipulating computer-card div
-    document.getElementById("computer-card").innerHTML = '<div id="card-name-div" class="card-name-style"><p><span id="bike-name-computer">Ducati</span></p></div><div id="card-img-div-computer" class="card-img-style"></div><div class="comparable card-stat-style" data-stat-type="power"><p>Power:</p> <span id="bike-power-computer">0</span><p> HP</p></div><div class="comparable card-stat-style" data-stat-type="torque"><p>Torque:</p> <span id="bike-torque-computer">0</span><p> Nm</p></div><div class="comparable card-stat-style" data-stat-type="speed"><p>0-100 km/h:</p> <span id="bike-speed-computer">0</span><p> s</p></div><div class="comparable card-stat-style" data-stat-type="rpm"><p>max RPM:</p> <span id="bike-rpm-computer">0</span><p> U/min</p></div>';
+    document.getElementById("computer-card").innerHTML = '<div id="card-name-div" class="card-name-style"><p><span id="bike-name-computer">Ducati</span></p></div><div id="card-img-div-computer" class="card-img-style"></div><div class="comparable card-stat-style" data-stat-type="power"><p>Power:</p> <span id="bike-power-computer">0</span><p> HP</p></div><div class="comparable card-stat-style" data-stat-type="torque"><p>Torque:</p> <span id="bike-torque-computer">0</span><p> Nm</p></div><div class="comparable card-stat-style" data-stat-type="speed"><p>0-100 km/h:</p> <span id="bike-speed-computer">0</span><p> s</p></div><div class="comparable card-stat-style" data-stat-type="rpm"><p>mRPM:</p> <span id="bike-rpm-computer">0</span><p> U/min</p></div>';
     // code to show image of card
     let bikeImg = document.createElement("img");
     bikeImg.src = card.image; 

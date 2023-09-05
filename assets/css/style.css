@@ -39,7 +39,7 @@ header {
 }
 #player-input {
     padding: 10px 20px;
-    margin-top: 30px;
+    margin: 30px 0 30px;
     font-family: Orbitron, sans-serif;
 }
 #game-button:hover {
@@ -47,7 +47,6 @@ header {
 }
 .button {
     padding: 10px 20px;
-    margin-top: 20px;
     font-family: Orbitron, sans-serif;
     border-radius: 5px;
     color:aqua;
@@ -150,8 +149,7 @@ img {
 .card-name-style {
     display: flex;
     align-items: center;
-    padding-left: 5px;
-}
+} .card-name-style span {padding-left:5px;}
 .comparable.card-stat-style {
     display: flex;
     justify-content: space-between;
@@ -183,9 +181,9 @@ img {
     width: 700px;
     min-width: 300px;
     height: 60px;
+    margin-top: -20px;
     display: flex;
     justify-content: center;
-    align-items: center;
     background-color: rgb(51,51,51);
 }
 #draft-next-card {
