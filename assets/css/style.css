@@ -12,7 +12,6 @@ header {
     color:aqua;
 }
 
-
 /* instruction field */
 .align-center {
     text-align : center;
@@ -215,9 +214,6 @@ footer {
     #button-area {
         width: 350px;
         height: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
     #draft-next-card {
         font-size: 50%;
@@ -229,16 +225,6 @@ footer {
         width: 350px;
         height: 40px;
         font-size: 50%;
-    }
-    #player-score {
-        position: relative;
-        left: 20px;
-        color: aqua;
-    }
-    #computer-score {
-        right: 20px;
-        position: relative;
-        color: aqua;
     }
 
     /* footer */

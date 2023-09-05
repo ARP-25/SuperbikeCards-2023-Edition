@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         });
     }
-})
+});
 
 // creating a object collection for the cards
 let cardData = [{ name: "Aprilia RSV4 1100", image: "assets/images/aprilia_rsv4.jpg", power: 217, torque: 122, speed: 2.7, rpm: 13600},
@@ -25,7 +25,7 @@ let cardData = [{ name: "Aprilia RSV4 1100", image: "assets/images/aprilia_rsv4.
                 { name: "Suzuki GSX-R1000", image: "assets/images/suzuki_gsx-R1000.jpg", power: 202, torque: 117, speed: 2.7, rpm: 14500},
                 { name: "BMW S1000RR", image: "assets/images/bmw_s1000_RR.jpg", power: 205 , torque: 113, speed: 2.7, rpm: 14500},
                 { name: "MV Agusta F4 RR", image: "assets/images/MV_Agusta_F4_RR.jpg", power:  201, torque: 111 , speed: 2.8, rpm: 13450},
-                { name: "Honda CBR1000RR FB", image: "assets/images/honda_cbr1000rr_fireblade.jpg", power: 214, torque: 116, speed: 2.8, rpm: 13000},]
+                { name: "Honda CBR1000RR FB", image: "assets/images/honda_cbr1000rr_fireblade.jpg", power: 214, torque: 116, speed: 2.8, rpm: 13000},];
 
 // ensuring random sequence in cardData array everytime script is executed
 shuffleCards(cardData);
@@ -35,12 +35,15 @@ let playerCards = [];
 let computerCards = [];
 // emptry array for the popped of cards from the players
 let discardPile = [];
-// top card player
+// creating var for top card player
 let topCard;
-// top card computer
+// creating car for top card computer
 let topCardC;
-
+// creating var for recent compared stat div
 let recentComparedStat;
+// game cycles depending on cardData array elements stored in two different variables
+let compareRounds = (cardData.length/2);
+let draftRounds = (cardData.length/2);
 
 // distributing the cards evenly into the arrays
 for (let i = 0; i < cardData.length; i++) {
@@ -51,11 +54,6 @@ for (let i = 0; i < cardData.length; i++) {
     }
 }
 
-// game cycles depending on cardData array elements stored in two different variables
-let compareRounds = (cardData.length/2);
-let draftRounds = (cardData.length/2);
-
-
 // when on game page execute following script
 if (document.getElementById("card-area")) {
 
@@ -65,19 +63,20 @@ if (document.getElementById("card-area")) {
         // add actual playername to score span
         let playerName = localStorage.getItem('playerName');
         document.getElementById("player-score").innerHTML = 'Score ' + playerName + ': <span id="score-count-player" class="score">0</span>';
-        // displaying the players first card
+
+        // displaying the players first card 
         showCard(playerCards[playerCards.length-1]);
-        let statDivs = document.getElementsByClassName("comparable");
 
         // onclick eventlistener for all divs with the class of comparable
+        let statDivs = document.getElementsByClassName("comparable");
         for ( let i=0 ; i<statDivs.length ; i++ ) {
             statDivs[i].addEventListener("click", function() {                
                 let stat = this.getAttribute("stat-type");
                 recentComparedStat = stat;
-                if( (compareRounds !== 0) && (compareRounds==draftRounds) ){
+                if( (compareRounds !== 0) && (compareRounds === draftRounds) ){
                     alert("You chose "+ this.getAttribute("stat-type") + " to compare!");
                     compare(stat, playerName);
-                } else if (compareRounds == 0) {
+                } else if (compareRounds === 0) {
                     alert("The game has ended! Click 'Go back to start Page' to start a new game")
                 }
                 else {
@@ -86,9 +85,9 @@ if (document.getElementById("card-area")) {
             })
         }
 
-        // creating var with elements of class score
+        // DOMSubtreeModified eventlistener for all element with the class of score
         let scoreCount = document.getElementsByClassName('score');
-        // will store the value of the most recent modified score
+        // this variable will store always the most recent modified score
         let actualValue;
         // add even listener for each score span
         for ( let score of scoreCount ) {
@@ -126,16 +125,16 @@ if (document.getElementById("card-area")) {
                 alert("The game has ended! Click 'Go back to start Page' to start a new game");
             }
             else {
-                alert("You need to compare your Card first before you can go to your next card!");
+                alert("You need to compare your Card first before you can draft your next card!");
             }
 
-        })
-       
-        
+        })       
     });
 }
 
-// using fisher Yytes shuffle algorithm for random shuffle of the cardData array 
+// functions
+
+// using fisher yates shuffle algorithm for random shuffle of the cardData array 
 function shuffleCards(cards) {
     for (let i = cards.length - 1; i > 0; i--) { 
         let j = Math.floor(Math.random() * (i + 1));
@@ -149,86 +148,46 @@ function compare(stat, playerName) {
     if ( stat === "torque" ) {
         if ( playerCards[playerCards.length-1].torque > computerCards[computerCards.length-1].torque ) {           
             alert(playerName+ " win round");
-            incrementScore("score-count-player");
-            showComputerCard(computerCards[computerCards.length-1]);
-            discardPile = playerCards.pop();
-            discardPile = computerCards.pop();
-            compareRounds--;
-            highlightComparedStats(stat);
+            wrapper("score-count-player", stat);
         } else if ( playerCards[playerCards.length-1].torque == computerCards[computerCards.length-1].torque ) {
             alert("Both cards have got the same Torque, please choose another stat to compare!");
         }
         else { 
             alert("Computer win round");
-            incrementScore("score-count-computer");
-            showComputerCard(computerCards[computerCards.length-1]);
-            discardPile = playerCards.pop();
-            discardPile = computerCards.pop();
-            compareRounds--;
-            highlightComparedStats(stat);
+            wrapper("score-count-computer", stat);
         }
     } else if ( stat === "power") {
         if (playerCards[playerCards.length-1].power > computerCards[computerCards.length-1].power) {
             alert(playerName+ " win round");
-            incrementScore("score-count-player");
-            showComputerCard(computerCards[computerCards.length-1]);
-            discardPile = playerCards.pop();
-            discardPile = computerCards.pop();
-            compareRounds--;
-            highlightComparedStats(stat);
+            wrapper("score-count-player", stat);
         } else if ( playerCards[playerCards.length-1].power == computerCards[computerCards.length-1].power ) {
             alert("Both cards have got the same Power, please choose another stat to compare!");
         } 
         else {
             alert("Computer win round");
-            incrementScore("score-count-computer");
-            showComputerCard(computerCards[computerCards.length-1]);
-            discardPile = playerCards.pop();
-            discardPile = computerCards.pop();
-            compareRounds--;
-            highlightComparedStats(stat);
+            wrapper("score-count-computer", stat);
         }
     } else if ( stat === "speed") {
         if (playerCards[playerCards.length-1].speed < computerCards[computerCards.length-1].speed) {
             alert(playerName+ " win round");
-            incrementScore("score-count-player");
-            showComputerCard(computerCards[computerCards.length-1]);
-            discardPile = playerCards.pop();
-            discardPile = computerCards.pop();
-            compareRounds--;
-            highlightComparedStats(stat);
+            wrapper("score-count-player", stat);
         } else if ( playerCards[playerCards.length-1].speed == computerCards[computerCards.length-1].speed ) {
             alert("Both cards have got the same Speed, please choose another stat to compare!");
         } 
          else {
             alert("Computer win round");
-            incrementScore("score-count-computer");
-            showComputerCard(computerCards[computerCards.length-1]);
-            discardPile = playerCards.pop();
-            discardPile = computerCards.pop();
-            compareRounds--;
-            highlightComparedStats(stat);
+            wrapper("score-count-computer", stat);
         }
     } else if ( stat === "rpm") {
         if (playerCards[playerCards.length-1].rpm > computerCards[computerCards.length-1].rpm) {
             alert(playerName+ " win round");
-            incrementScore("score-count-player");
-            showComputerCard(computerCards[computerCards.length-1]);
-            discardPile = playerCards.pop();
-            discardPile = computerCards.pop();
-            compareRounds--;
-            highlightComparedStats(stat);
+            wrapper("score-count-player", stat);
         } else if ( playerCards[playerCards.length-1].rpm == computerCards[computerCards.length-1].rpm ) {
             alert("Both cards have got the same rpm, please choose another stat to compare!");
         }
          else {
             alert("Computer win round");
-            incrementScore("score-count-computer");
-            showComputerCard(computerCards[computerCards.length-1]);
-            discardPile = playerCards.pop();
-            discardPile = computerCards.pop();
-            compareRounds--;
-            highlightComparedStats(stat);
+            wrapper("score-count-computer", stat);
         }
     } 
 }
@@ -283,10 +242,21 @@ function highlightComparedStats(stat) {
         comparedStat.classList.add('red-highlight');
     }
 }
+
 // unhighlighting the compared stats
 function unhighlightingComparedStats(stat) {
     let statDivs = document.querySelectorAll('[stat-type="'+stat+'"]');
     for (let comparedStat of statDivs) {
         comparedStat.classList.remove('red-highlight');
     }
+}
+
+// wrapper function
+function wrapper(winner, stat) {
+    incrementScore(winner);
+    showComputerCard(computerCards[computerCards.length-1]);
+    discardPile = playerCards.pop();
+    discardPile = computerCards.pop();
+    compareRounds--;
+    highlightComparedStats(stat);
 }
