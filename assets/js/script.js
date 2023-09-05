@@ -241,7 +241,7 @@ function showComputerCard(card) {
 
 // hiding computer card
 function hideComputerCard() {
-    document.getElementById("computer-card").innerHTML = '<img src="/assets/images/card_backside.jpg"></img>';
+    document.getElementById("computer-card").innerHTML = '<img src="assets/images/card_backside.jpg"></img>';
     document.getElementById("computer-card").alt = "Backside of the Computer Card";
 }
 
