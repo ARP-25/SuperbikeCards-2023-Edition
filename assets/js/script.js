@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 else {
                     alert("You need to draft a new Card before you can compare again");
                 }
-            })
+            });
         }
 
         // DOMSubtreeModified eventlistener for all element with the class of score
