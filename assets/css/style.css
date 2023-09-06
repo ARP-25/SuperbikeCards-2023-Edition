@@ -149,13 +149,15 @@ img {
 .card-name-style {
     display: flex;
     align-items: center;
-} .card-name-style span {padding-left:5px;}
+} 
+.card-name-style span {
+    padding-left:5px;
+}
 .comparable.card-stat-style {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  
 .comparable.card-stat-style p:first-child {
     text-align: left;
     flex: 1;
@@ -276,6 +278,7 @@ footer {
     #versus {
         top: 200px;
         font-size: 100%;
+        padding-right: 2px;
     }
 
     /* button area */
