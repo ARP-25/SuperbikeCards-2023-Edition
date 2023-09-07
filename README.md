@@ -161,7 +161,7 @@ For validator testing https://validator.w3.org/, https://jigsaw.w3.org/css-valid
 
 Google Lighthouse in Google Chrome Developer Tools was used to test the performance of the website.
 
-![Lighthouse](documentation/doc_images/lighthouse.png)
+![Lighthouse](documentation/images/lighthouse.png)
 
 ### Browser Compatibility
 
