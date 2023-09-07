@@ -105,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
         
+        
         // DOMSubtreeModified eventlistener for all element with the class of score
         let scoreCount = document.getElementsByClassName('score');
         // this variable will store always the most recent modified score
@@ -127,6 +128,38 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         }
+        
+        
+        // this variable will store always the most recent modified score
+        let actualValue;
+        // calling all elements of class "score"
+        const scoreElements = document.querySelectorAll('.score');
+        // creating instant of MutationObserver 
+        const observer = new MutationObserver(function(mutationsList) {
+            for (const mutation of mutationsList) {               
+                // storing textContent(mutation) of observed target in actualValue
+                actualValue = parseInt(mutation.target.textContent);
+                // checking if text content is '3'
+                if (mutation.target.textContent === '3') {
+                        // if value of player score is 3
+                        if (mutation.target.id === "score-count-player") {
+                            alert ("The winner is "+playerName+"!");
+                        }
+                        // if value of computer score is 3
+                        if (mutation.target.id === "score-count-computer") {
+                            alert ("The winner is Computer!");
+                        }
+                }
+            }
+        });
+        // Konfiguration des Observers
+        const observerConfig = { childList: true, subtree: true };
+        // Beginnen Sie mit der Beobachtung der ausgewählten Elemente
+        scoreElements.forEach(function(scoreElement) {
+            observer.observe(scoreElement, observerConfig);
+        });
+        
+        
 
         // onclick eventlistener for draftcardbutton
         let draftCardButton = document.getElementById("draft-next-card");

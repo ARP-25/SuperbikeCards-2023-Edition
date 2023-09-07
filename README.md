@@ -159,9 +159,20 @@ For validator testing https://validator.w3.org/, https://jigsaw.w3.org/css-valid
 
 ### Performance
 
-Google Lighthouse in Google Chrome Developer Tools was used to test the performance of the website.
+Google Lighthouse in Google Chrome Developer Tools was used to test the performance of the website. The maximum score in all categories were achieved. 
 
-![Lighthouse](documentation/images/lighthouse.png)
+#### Start Page
+![Lighthouse Start Page](documentation/images/lighthouse.png)
+#### Game Page
+![Lighthouse Game Page](documentation/images/lighthouse_game_page.png)
+
+However the game page was lacking eight points in the "Best Practices" categories in the first run of the test so the code had to be improved. The insufficiency was rectified by replacing the "DOM Mutation Event" (DOMSubtreeModified) with a "MutationObserver" implementation. The Process is documented below.
+
+![Lighthouse Game Page before](documentation/images/lighthouse_game_page_before.png)
+![Code before](documentation/code_before.png)
+![Code after](documentation/code_before.png)
+
+
 
 ### Browser Compatibility
 
