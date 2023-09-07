@@ -119,7 +119,7 @@ In this table you can see that every User Story is covered by an implemented Fea
 -   ### Colour Scheme
     -  The color Scheme is adjusted to mainly provide good contrast and readability still offering an appealing design and fit the theme of superbikes.
     -  The specific areas have the background-color: "rgb(51,51,51)". Which is a dark gray similar to asphalt.
-    -  For logo and certain elements "#FF6600" and "aqua" were used. These two provide a modern, race sport and game oriented look.
+    -  For logo and certain elements "#FFA500" and "aqua" were used. These two provide a modern, race sport and game oriented look.
     -  Font Color is adjusted through the game to give good contrast to specific background-color.
 
 -   ### Typography
@@ -154,7 +154,8 @@ In this table you can see that every User Story is covered by an implemented Fea
 
 ### Validator Testing
 
-For validator testing https://validator.w3.org/, https://jigsaw.w3.org/css-validator/  and https://jshint.com/ were used. The code runs totally error free and only has negligible warnings.
+For validator testing https://validator.w3.org/, https://jigsaw.w3.org/css-validator/  and https://jshint.com/ were used. The code runs totally error free and has only negligible warnings.
+
 
 ### Performance
 

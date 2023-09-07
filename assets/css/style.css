@@ -15,7 +15,7 @@ header {
     font-family: Bangers, sans-serif;
     position: relative;
     top: -25px;
-    color: #FF6600;
+    color: #FFA500;
     left: 130px;
     font-style: oblique;
     opacity: 0; 
@@ -90,7 +90,7 @@ header {
     top: 380px;
     font-family: Bangers, sans-serif;
     font-size: 500%;
-    color: #FF6600;
+    color: #FFA500;
 }
 #computer-card {
     width: 240px;
@@ -141,10 +141,10 @@ img {
 }
 .comparable:hover {
     transform: scale(1.05);
-    background-color: #FF6600;
+    background-color: #FFA500;
 }
 .red-highlight {
-    background-color: #FF6600;
+    background-color: #FFA500;
 }
 .card-name-style {
     display: flex;
@@ -214,7 +214,7 @@ img {
 #computer-score {
     right: 20px;
     position: relative;
-    color: #FF6600;
+    color: #FFA500;
 }
 
 /* footer */
