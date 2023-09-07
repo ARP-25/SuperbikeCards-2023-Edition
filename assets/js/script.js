@@ -1,4 +1,5 @@
 /*jshint esversion: 6 */
+
 // after dom elements are loaded we start to manipulate the elements
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -68,7 +69,6 @@ for (let i = 0; i < cardData.length; i++) {
     }
 }
 
-
 // after dom elements are loaded we start to manipulate the elements
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -104,32 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         }
-        
-        
-        // DOMSubtreeModified eventlistener for all element with the class of score
-        let scoreCount = document.getElementsByClassName('score');
-        // this variable will store always the most recent modified score
-        let actualValue;
-        // add even listener for each score span
-        for ( let score of scoreCount ) {
-            score.addEventListener('DOMSubtreeModified', function() {
-                // call the value of each span(score) element and parse it to int               
-                actualValue = parseInt(score.textContent);
-                // check if value is 3
-                if ( actualValue === 3 ) {
-                    // if value of player score is 3
-                    if (score.id === "score-count-player") {
-                        alert ("The winner is "+playerName+"!");
-                    }
-                    // if value of computer score is 3
-                    if (score.id === "score-count-computer") {
-                        alert ("The winner is Computer!");
-                    }
-                }
-            });
-        }
-        
-        
+             
         // this variable will store always the most recent modified score
         let actualValue;
         // calling all elements of class "score"
@@ -152,15 +127,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         });
-        // Konfiguration des Observers
+        // configurating the observer
         const observerConfig = { childList: true, subtree: true };
-        // Beginnen Sie mit der Beobachtung der ausgewählten Elemente
+        // starting to observe the object
         scoreElements.forEach(function(scoreElement) {
             observer.observe(scoreElement, observerConfig);
         });
         
-        
-
         // onclick eventlistener for draftcardbutton
         let draftCardButton = document.getElementById("draft-next-card");
         draftCardButton.addEventListener("click", function() {

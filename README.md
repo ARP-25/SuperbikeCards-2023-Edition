@@ -169,8 +169,8 @@ Google Lighthouse in Google Chrome Developer Tools was used to test the performa
 However the game page was lacking eight points in the "Best Practices" categories in the first run of the test so the code had to be improved. The insufficiency was rectified by replacing the "DOM Mutation Event" (DOMSubtreeModified) with a "MutationObserver" implementation. The Process is documented below.
 
 ![Lighthouse Game Page before](documentation/images/lighthouse_game_page_before.png)
-![Code before](documentation/code_before.png)
-![Code after](documentation/code_before.png)
+![Before](documentation/images/code_before.png)
+![After](documentation/images/code_after.png)
 
 
 
@@ -189,3 +189,6 @@ However the game page was lacking eight points in the "Best Practices" categorie
 
 
 
+
+
+[def]: documentation/code_before.png
