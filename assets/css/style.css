@@ -43,7 +43,7 @@ header {
     font-family: Orbitron, sans-serif;
 }
 #game-button:hover {
-    transition: color 0,4s linear;
+    transition: color 0.4s linear;
 }
 .button {
     padding: 10px 20px;
