@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         }
-
+        
         // DOMSubtreeModified eventlistener for all element with the class of score
         let scoreCount = document.getElementsByClassName('score');
         // this variable will store always the most recent modified score
