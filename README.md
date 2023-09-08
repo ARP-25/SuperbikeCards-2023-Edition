@@ -28,23 +28,23 @@ So, whether you're on your smartphone during a coffee break, using your tablet o
 
 #### Start Page: 
 
-1. Get a idea what the purpose of the page is about and see clear and concise instructions on how the game works so that I can quickly understand how to play.
+- US01 Get a idea what the purpose of the page is about and see clear and concise instructions on how the game works so that I can quickly understand how to play.
 
-2. Be able to enter my username so that I can personalize my gaming experience.
+- US02 Be able to enter my username so that I can personalize my gaming experience.
 
-3. Receive feedback if I enter an invalid or empty username so that I know what I need to correct.
+- US03 Receive feedback if I enter an invalid or empty username so that I know what I need to correct.
 
-4. Have a "Start Game" button on the instructions page so that I can begin playing the game.
+- US04 Have a "Start Game" button on the instructions page so that I can begin playing the game.
 
 #### Game Page:
 
-5. Have clear and intuitive game controls to interact with the game effectively.
+- US05 Have clear and intuitive game controls to interact with the game effectively.
 
-6. Receive instructions or guidance on how to play the game against the computer.
+- US06 Receive instructions or guidance on how to play the game against the computer.
 
-7. See my current score or progress during the game so that I can track my performance.
+- US07 See my current score or progress during the game so that I can track my performance.
 
-8. Have the option to exit the game and return to the instructions page in case I want to review the game rules, change my username or simply start a new game.
+- US08 Have the option to exit the game and return to the instructions page in case I want to review the game rules, change my username or simply start a new game.
 
 ## Features
 
@@ -114,16 +114,16 @@ In this table you can see that every User Story is covered by an implemented Fea
 ## Design
 
 -   ### Imagery
-    -   The card pictures are all realistically representing the associated card specs which are both not fictional.
+    -   The card pictures are all realistically representing the associated card specs and are both not fictional.
 
 -   ### Colour Scheme
-    -  The color Scheme is adjusted to mainly provide good contrast and readability still offering an appealing design and fit the theme of superbikes.
+    -  The color Scheme is adjusted to mainly provide good contrast and readability but still offers an appealing design and fit the theme of superbikes.
     -  The specific areas have the background-color: "rgb(51,51,51)". Which is a dark gray similar to asphalt.
     -  For logo and certain elements "#FFA500" and "aqua" were used. These two provide a modern, race sport and game oriented look.
     -  Font Color is adjusted through the game to give good contrast to specific background-color.
 
 -   ### Typography
-    -   Google Fonts was used to import font into styles.css. Orbitron and Bangers were chosen to introduce a dynamic contrast. Orbitron represents sleek futuristic technology, focusing on precision and speed, while Bangers bring a gritty, rebellious vibe with raw power and aggression. This choice adds diversity, balance, and engaging gameplay to the experience, appealing to a wide range of players.
+    -   Google Fonts was used to import font into styles.css. Orbitron and Bangers were chosen to introduce a dynamic contrast. Orbitron represents sleek futuristic technology, focusing on precision and speed, while Bangers bring a gritty, rebellious vibe with raw power and aggression. This choice adds diversity, balance, and engaging gameplay to the experience.
 
 -   ### Wireframes
 
@@ -140,7 +140,6 @@ In this table you can see that every User Story is covered by an implemented Fea
 -   [Javascript](https://en.wikipedia.org/wiki/JavaScript)
 -   [Markdown](https://de.wikipedia.org/wiki/Markdown)
 
-
 ### Frameworks, Libraries & Programs Used
 
 -   [Gitpod:](https://gitpod.io) was used as IDE to create the code. It provides good compatibility with github and offers useful IDE extensions.
@@ -155,7 +154,6 @@ In this table you can see that every User Story is covered by an implemented Fea
 ### Validator Testing
 
 For validator testing https://validator.w3.org/, https://jigsaw.w3.org/css-validator/  and https://jshint.com/ were used. The code runs totally error free and has only negligible warnings.
-
 
 ### Performance
 
@@ -172,8 +170,6 @@ However the game page was lacking eight points in the "Best Practices" categorie
 ![Before](documentation/images/code_before.png)
 ![After](documentation/images/code_after.png)
 
-
-
 ### Browser Compatibility
 
 - Testing has been carried out on the following browsers :
@@ -184,11 +180,51 @@ However the game page was lacking eight points in the "Best Practices" categorie
 
 ### Test Cases and Results
 
-![ManualTesting](documentation/doc_images/testing_table.png)
+![ManualTesting](XXXXXXXXXXXXXXXXXXXXXXX)
 
+## Deployment
 
+### How this site was deployed
 
+- In the GitHub repository, navigate to the Settings tab, then choose Pages from the left hand menu.
+- From the source section drop-down menu, select the Master Branch.
+- Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+- Any changes pushed to the master branch will take effect on the live project.
 
+  The live link can be found here - [Superbike Cards 2023 Edition](https://arp-25.github.io/superbike_cards/) 
 
+### How to clone the repository
 
-[def]: documentation/code_before.png
+- Go to the https://arp-25.github.io/superbike_cards/ repository on GitHub.
+- Click the "Code" button to the right of the screen, click HTTPs and copy the link there.
+- Open a GitBash terminal and navigate to the directory where you want to locate the clone.
+- On the command line, type "git clone" then paste in the copied url and press the Enter key to begin the clone process.
+
+## Credits 
+
+### Content 
+
+All content was written by the developer.
+
+### Code
+
+Examples and instructions for basic html and CSS code:
+
+- https://developer.mozilla.org
+- https://www.w3schools.com
+- https://learn.codeinstitute.net/
+
+Additional searching for problemfixes:
+
+- https://stackoverflow.com
+- https://www.youtube.com/?gl=DE&hl=de
+
+### Media 
+ 
+- All icons were taken from [Font Awesome](https://fontawesome.com/).
+- All fonts used were imported from [Google Fonts](https://fonts.google.com/).
+- All bike images were mainly downlaoded from the official manufacturer.
+
+### Shoutout
+
+Special thanks to my Mentor Oluwafemi Medale for helping me out whenever I have a question.
