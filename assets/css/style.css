@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Orbitron:wght@700&display=swap');
-
+@keyframes blinkAnimation {
+    0% {
+      background-color: black;
+    }
+    50% {
+      background-color: green;
+    }
+    100% {
+      background-color: black;
+    }
+  }
+  
 /* body */
 body {
     background: black;
@@ -190,10 +201,12 @@ img {
     justify-content: center;
     background-color: rgb(51,51,51);
 }
-#draft-next-card {
-    background: black;
+.black {
+    background-color: black;
 }
-
+.blink {
+    animation: blinkAnimation 1s infinite;
+}
 /* score area */
 #score-area-container {
     display: flex;

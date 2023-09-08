@@ -152,10 +152,14 @@ document.addEventListener("DOMContentLoaded", function() {
                         // if value of player score is 3
                         if (mutation.target.id === "score-count-player") {
                             showModal ("The winner is "+playerName+"!");
+                            draftCardButtonUnBlink();
+                            exchangeDraftCardButton();
                         }
                         // if value of computer score is 3
                         if (mutation.target.id === "score-count-computer") {
                             showModal ("The winner is Computer!");
+                            draftCardButtonUnBlink();
+                            exchangeDraftCardButton();
                         }
                 }
             }
@@ -167,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function() {
             observer.observe(scoreElement, observerConfig);
         }
         
-        // onclick eventlistener for draftcardbutton
+        // onclick eventlistener for Draft Card Button
         let draftCardButton = document.getElementById("draft-next-card");
         draftCardButton.addEventListener("click", function() {
             // player will be able to draft new card and finish one game cycle when he compared his card
@@ -178,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 showCard(topCard);
                 hideComputerCard();
                 draftRounds--;
+                draftCardButtonUnBlink();
             } else if (draftRounds === 1) {
                 showModal("The game has ended! Click 'Go back to start Page' to start a new game");
             } else if (actualValue === 3 ) {
@@ -321,6 +326,7 @@ function highlightComparedStat(stat) {
     for (let comparedStat of statDivs) {
         comparedStat.classList.add('red-highlight');
     }
+    draftCardButtonBlink();
 }
 
 /**
@@ -374,3 +380,29 @@ function wrapperCloseModal(){
         }
     });
 }
+
+/**
+ * Adds blink effect to Dract Card Button
+ */
+function draftCardButtonBlink(){
+    let draftCardButton = document.getElementById("draft-next-card");
+    draftCardButton.classList.add("blink");
+} 
+
+/**
+ * Removes blink effect to Dract Card Button
+ */
+function draftCardButtonUnBlink(){
+    let draftCardButton = document.getElementById("draft-next-card");
+    draftCardButton.classList.remove("blink");
+}
+
+function exchangeDraftCardButton() {
+    let draftCardButton = document.getElementById("draft-next-card");
+    console.log(draftCardButton.innerText);
+    draftCardButton.innerText = "Start new Game!";
+    draftCardButton.addEventListener("click", function() {
+        location.reload();
+    });
+}
+    
