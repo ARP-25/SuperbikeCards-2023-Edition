@@ -1,16 +1,16 @@
 /*jshint esversion: 6 */
 
 // card object array
-let cardData = [{ name: "Aprilia RSV4 1100", image: "assets/images/aprilia_rsv4.jpg", power: 217, torque: 122, speed: 2.7, rpm: 13600},
-                { name: "Ducati Panigale V2", image: "assets/images/ducati_panigale_v2.jpg", power: 155, torque: 104, speed: 3.2, rpm: 11500},
-                { name: "Ducati Panigale V4", image: "assets/images/ducati_panigale_v4.jpeg", power: 214, torque: 124, speed: 2.7, rpm: 15500},
-                { name: "Ducati Panigale V4R", image: "assets/images/ducati_panigale_v4_r.jpg", power: 234, torque: 119, speed: 2.6, rpm: 16500},
-                { name: "Yamaha YZF R1", image: "assets/images/yamaha_yzf_r1.png", power: 200, torque: 112, speed: 2.7, rpm: 14000},
-                { name: "Kawasaki Ninja", image: "assets/images/kawasaki_ninja_zx-10r.jpg", power:  203, torque: 115, speed: 2.8, rpm: 14000},
-                { name: "Suzuki GSX-R1000", image: "assets/images/suzuki_gsx-R1000.jpg", power: 202, torque: 117, speed: 2.7, rpm: 14500},
-                { name: "BMW S1000RR", image: "assets/images/bmw_s1000_RR.jpg", power: 205 , torque: 113, speed: 2.7, rpm: 14500},
-                { name: "MV Agusta F4 RR", image: "assets/images/MV_Agusta_F4_RR.jpg", power:  201, torque: 111 , speed: 2.8, rpm: 13450},
-                { name: "Honda CBR1000RR FB", image: "assets/images/honda_cbr1000rr_fireblade.jpg", power: 214, torque: 116, speed: 2.8, rpm: 13000},];
+let cardData = [{ name: "Aprilia RSV4 1100", image: "assets/game/images/aprilia_rsv4.jpg", power: 217, torque: 122, speed: 2.7, rpm: 13600},
+                { name: "Ducati Panigale V2", image: "assets/game/images/ducati_panigale_v2.jpg", power: 155, torque: 104, speed: 3.2, rpm: 11500},
+                { name: "Ducati Panigale V4", image: "assets/game/images/ducati_panigale_v4.jpeg", power: 214, torque: 124, speed: 2.7, rpm: 15500},
+                { name: "Ducati Panigale V4R", image: "assets/game/images/ducati_panigale_v4_r.jpg", power: 234, torque: 119, speed: 2.6, rpm: 16500},
+                { name: "Yamaha YZF R1", image: "assets/game/images/yamaha_yzf_r1.png", power: 200, torque: 112, speed: 2.7, rpm: 14000},
+                { name: "Kawasaki Ninja", image: "assets/game/images/kawasaki_ninja_zx-10r.jpg", power:  203, torque: 115, speed: 2.8, rpm: 14000},
+                { name: "Suzuki GSX-R1000", image: "assets/game/images/suzuki_gsx-R1000.jpg", power: 202, torque: 117, speed: 2.7, rpm: 14500},
+                { name: "BMW S1000RR", image: "assets/game/images/bmw_s1000_RR.jpg", power: 205 , torque: 113, speed: 2.7, rpm: 14500},
+                { name: "MV Agusta F4 RR", image: "assets/game/images/MV_Agusta_F4_RR.jpg", power:  201, torque: 111 , speed: 2.8, rpm: 13450},
+                { name: "Honda CBR1000RR FB", image: "assets/game/images/honda_cbr1000rr_fireblade.jpg", power: 214, torque: 116, speed: 2.8, rpm: 13000},];
 
 // two empty card arrays for player and computer
 let playerCards = [];
@@ -308,7 +308,7 @@ function showComputerCard(card) {
  * Hides Computer Card
  */
 function hideComputerCard() {
-    document.getElementById("computer-card").innerHTML = '<img src="assets/images/card_backside.jpg"></img>';
+    document.getElementById("computer-card").innerHTML = '<img src="assets/game/images/card_backside.jpg"></img>';
     document.getElementById("computer-card").alt = "Backside of the Computer Card";
 }
 

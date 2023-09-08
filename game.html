@@ -50,7 +50,7 @@
                 </div>
                 <div id="versus">VS</div>
                 <div id="computer-card">
-                    <img src="assets/images/card_backside.jpg" alt="Backside of the Computer card">
+                    <img src="assets/game/images/card_backside.jpg" alt="Backside of the Computer card">
                 </div>
             </div>
         </section>
@@ -58,18 +58,18 @@
         <!-- button area -->
         <section id="button-area-container">
             <div id="button-area">
-                <button id="draft-next-card" class="button">Draft next Card!</button>
+                <button id="draft-next-card" class="button" aria-label="Draft the next card">Draft next Card!</button>
             </div>
         </section>
 
         <!-- score area -->
         <section id="score-area-container">
             <div id="score-area">
-                <p id="player-score">
+                <p id="player-score" aria-label="Player Score">
                     Score Player: <span id="score-count-player" class="score">0</span>
                 </p>
                 <p id="player-name"></p>
-                <p id="computer-score">
+                <p id="computer-score" aria-label="Computer Score">
                     Score Computer: <span id="score-count-computer" class="score">0</span>
                 </p>
             </div>
@@ -77,7 +77,9 @@
 
         <!-- footer -->
         <footer class="align-center">
-            <a id="nav-anchor" href="index.html"><i class="fa-solid fa-rotate-left"></i> Return to Start Page</a>
+            <a id="nav-anchor" href="index.html" aria-label="Return to Start Page">
+                <i class="fa-solid fa-rotate-left"></i> Return to Start Page
+            </a>
         </footer>
 
         <!-- script link -->

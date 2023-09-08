@@ -1,5 +1,5 @@
 # Superbike Cards 2023 Edition <br>
-![titleimage](documentation/images/am_I_responsive.png) 
+![titleimage](assets/documentation/images/am_I_responsive.png) 
 ## Description
 Welcome to the world of 'Superbike Cards 2023 Edition', where the versatility of JavaScript brings the newest superbikes into your browser. Get ready to immerse yourself in a card game that combines excitement, strategy, and an in-depth exploration of 2023's street-legal superbikes. Best of all, it's fully responsive, ensuring you can enjoy the game seamlessly on smartphones, tablets, and computers of various screen sizes.
 
@@ -54,38 +54,38 @@ So, whether you're on your smartphone during a coffee break, using your tablet o
 
 -  F01 Header 
     -   Logo
-    ![Header](documentation/images/feature_1.png)    
+    ![Header](assets/documentation/images/feature_1.png)    
 -  F02 Instructions
     -   Step by step game instructions
-    ![Instructions](documentation/images/feature_2.png) 
+    ![Instructions](assets/documentation/images/feature_2.png) 
 -  F03 Player Name Input
     -   A input field for the player name
     -   Personalizing game experience
     -   Input is required and limited to ten characters
-    ![Player Name Input](documentation/images/feature_3.png) 
+    ![Player Name Input](assets/documentation/images/feature_3.png) 
 
 -  F04 Start Game Button
     -   Button to enter the Game by "onclick"
     -   Will check if Player Name is entered
-    ![Start Game Button](documentation/images/feature_4.png) 
+    ![Start Game Button](assets/documentation/images/feature_4.png) 
 
 
 #### Game Page
 
 -  F05 Header 
     -   Logo
-    ![Header](documentation/images/feature_1.png) 
+    ![Header](assets/documentation/images/feature_1.png) 
 -  F06 Cards
     -   Card Area consistend of Player Card and Computer Card
     -   Player Card is interactive and give the player the option to choose a attribute to enter the battle
     -   Computer Card will get revealed after Player engaged the battle so the Player will be able to see if he won or lost the round
-    ![Cards](documentation/images/feature_6.png) 
+    ![Cards](assets/documentation/images/feature_6.png) 
 -  F07 Draft Next Card Button
     -   Interactive Button for Player to draft his next card
-    ![Draft Next Card Button](documentation/images/feature_7.png)
+    ![Draft Next Card Button](assets/documentation/images/feature_7.png)
 -  F08 Scores
     -   Score area to showcase the current scores of Player and Computer
-    ![Scores](documentation/images/feature_8.png)
+    ![Scores](assets/documentation/images/feature_8.png)
 -  F09 Return to Start Page Button
     -   Button which brings you back to the Start Page by "onclick"
 
@@ -129,7 +129,7 @@ In this table you can see that every User Story is covered by an implemented Fea
 
     [WireFrames Superbike Cards 2023 Edition](https://www.figma.com/file/wmXvMsoPH0Q0xPqbRAXWVs/Superbike-Cards-2023-Edition?type=design&node-id=0-1&mode=design&t=28Gqof5EH0XBYHV7-0)
 
-    ![WireFrames Screenshot](documentation/images/wireframes.png)
+    ![WireFrames Screenshot](assets/documentation/images/wireframes.png)
 
 ## Technologies Used
 
@@ -160,15 +160,15 @@ For validator testing https://validator.w3.org/, https://jigsaw.w3.org/css-valid
 Google Lighthouse in Google Chrome Developer Tools was used to test the performance of the website. The maximum score in all categories were achieved. 
 
 #### Start Page
-![Lighthouse Start Page](documentation/images/lighthouse.png)
+![Lighthouse Start Page](assets/documentation/images/lighthouse.png)
 #### Game Page
-![Lighthouse Game Page](documentation/images/lighthouse_game_page.png)
+![Lighthouse Game Page](assets/documentation/images/lighthouse_game_page.png)
 
 However the game page was lacking eight points in the "Best Practices" categories in the first run of the test so the code had to be improved. The insufficiency was rectified by replacing the "DOM Mutation Event" (DOMSubtreeModified) with a "MutationObserver" implementation. The Process is documented below.
 
-![Lighthouse Game Page before](documentation/images/lighthouse_game_page_before.png)
-![Before](documentation/images/code_before.png)
-![After](documentation/images/code_after.png)
+![Lighthouse Game Page before](assets/documentation/images/lighthouse_game_page_before.png)
+![Before](assets/documentation/images/code_before.png)
+![After](assets/documentation/images/code_after.png)
 
 ### Browser Compatibility
 
@@ -180,7 +180,7 @@ However the game page was lacking eight points in the "Best Practices" categorie
 
 ### Test Cases and Results
 
-![ManualTesting](documentation/images/manual_testing.png)
+![ManualTesting](assets/documentation/images/manual_testing.png)
 
 ## Deployment
 
