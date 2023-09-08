@@ -153,7 +153,7 @@ In this table you can see that every User Story is covered by an implemented Fea
 
 ### Validator Testing
 
-For validator testing https://validator.w3.org/, https://jigsaw.w3.org/css-validator/  and https://jshint.com/ were used. The code runs totally error free and has only negligible warnings.
+For validator testing https://validator.w3.org/, https://jigsaw.w3.org/css-validator/ and https://jshint.com/ were used. The code runs totally error free and has only negligible warnings.
 
 ### Performance
 
@@ -180,7 +180,7 @@ However the game page was lacking eight points in the "Best Practices" categorie
 
 ### Test Cases and Results
 
-![ManualTesting](XXXXXXXXXXXXXXXXXXXXXXX)
+![ManualTesting](documentation/images/manual_testing.png)
 
 ## Deployment
 
@@ -223,7 +223,7 @@ Additional searching for problemfixes:
  
 - All icons were taken from [Font Awesome](https://fontawesome.com/).
 - All fonts used were imported from [Google Fonts](https://fonts.google.com/).
-- All bike images were mainly downlaoded from the official manufacturer.
+- All bike images were mainly downloaded from the official manufacturer.
 
 ### Shoutout
 
