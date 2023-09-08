@@ -1,13 +1,16 @@
 /*jshint esversion: 6 */
 
 // after dom elements are loaded we start to manipulate the elements
-document.addEventListener("DOMContentLoaded", function() {
 
+document.addEventListener("DOMContentLoaded", function() {
     // reveal elemend id="edition"
     setTimeout(function() {
         document.getElementById("edition").classList.add("show");
     }, 1000); 
-        
+
+    // listener for all moding closing tags
+    wrapperCloseModal();    
+
     // when on index page execute following code in this function
     if (document.getElementById("start-game")) {
         document.getElementById("start-game").addEventListener("click", function() {
@@ -21,10 +24,10 @@ document.addEventListener("DOMContentLoaded", function() {
             window.location.href = "game.html";
             
         } else if (playerInput.length > 10) {
-            alert("Use a maximum of ten characters for your Player Name!");
+            showModal("Use a maximum of ten characters for your Player Name!");
         }
         else {
-            alert("Please enter your Player Name!");
+            showModal("Please enter your Player Name!");
         }
         });
     }
@@ -42,9 +45,6 @@ let cardData = [{ name: "Aprilia RSV4 1100", image: "assets/images/aprilia_rsv4.
                 { name: "MV Agusta F4 RR", image: "assets/images/MV_Agusta_F4_RR.jpg", power:  201, torque: 111 , speed: 2.8, rpm: 13450},
                 { name: "Honda CBR1000RR FB", image: "assets/images/honda_cbr1000rr_fireblade.jpg", power: 214, torque: 116, speed: 2.8, rpm: 13000},];
 
-// ensuring random sequence in cardData array everytime script is executed
-shuffleCards(cardData);
-
 // creating two empty card arrays for player and computer
 let playerCards = [];
 let computerCards = [];
@@ -60,6 +60,9 @@ let recentComparedStat;
 let compareRounds = (cardData.length/2);
 let draftRounds = (cardData.length/2);
 
+// ensuring random sequence in cardData array everytime script is executed
+shuffleCards(cardData);
+
 // distributing the cards evenly into the arrays
 for (let i = 0; i < cardData.length; i++) {
     if (i % 2 === 0) {
@@ -71,6 +74,14 @@ for (let i = 0; i < cardData.length; i++) {
 
 // after dom elements are loaded we start to manipulate the elements
 document.addEventListener("DOMContentLoaded", function() {
+
+    // modasl implementation
+    // Get the draft modal element and its text content
+    const draftModal = document.getElementById("draftModal");
+    const draftModalText = document.getElementById("draftModalText");
+
+    // listener for all moding closing tags
+    wrapperCloseModal();
 
     // when on game page execute following script
     if (document.getElementById("card-area")) {
@@ -94,16 +105,23 @@ document.addEventListener("DOMContentLoaded", function() {
                 let stat = this.getAttribute("data-stat-type");
                 recentComparedStat = stat;
                 if( (compareRounds !== 0) && (compareRounds === draftRounds) ){
-                    alert("You chose "+ this.getAttribute("data-stat-type") + " to compare!");
+                    showModal("You chose "+ this.getAttribute("data-stat-type") + " to compare!");
                     compare(stat, playerName);
                 } else if (compareRounds === 0) {
-                    alert("The game has ended! Click 'Go back to start Page' to start a new game");
+                    showModal("The game has ended! Click 'Go back to start Page' to start a new game");
                 }
-                else {
-                    alert("You need to draft a new Card before you can compare again");
+                else {                   
+                    showModal("You need to draft a new Card before you can compare again");
                 }
             });
         }
+
+        // Close the draft modal when clicking outside of it
+        window.addEventListener("click", function(event) {
+            if (event.target === draftModal) {
+                draftModal.style.display = "none";
+            }
+        });
              
         // this variable will store always the most recent modified score
         let actualValue;
@@ -118,11 +136,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (mutation.target.textContent === '3') {
                         // if value of player score is 3
                         if (mutation.target.id === "score-count-player") {
-                            alert ("The winner is "+playerName+"!");
+                            showModal ("The winner is "+playerName+"!");
                         }
                         // if value of computer score is 3
                         if (mutation.target.id === "score-count-computer") {
-                            alert ("The winner is Computer!");
+                            showModal ("The winner is Computer!");
                         }
                 }
             }
@@ -130,9 +148,9 @@ document.addEventListener("DOMContentLoaded", function() {
         // configurating the observer
         const observerConfig = { childList: true, subtree: true };
         // starting to observe the object
-        scoreElements.forEach(function(scoreElement) {
+        for (const scoreElement of scoreElements) {
             observer.observe(scoreElement, observerConfig);
-        });
+        };
         
         // onclick eventlistener for draftcardbutton
         let draftCardButton = document.getElementById("draft-next-card");
@@ -141,26 +159,26 @@ document.addEventListener("DOMContentLoaded", function() {
             if( (draftRounds !== 1) && (compareRounds<draftRounds) && (actualValue !==3)) {   
                 topCard = playerCards[playerCards.length-1];
                 topCardC = computerCards[playerCards.length-1];
-                unhighlightingComparedStats(recentComparedStat);
+                unhighlightingComparedStats();
                 showCard(topCard);
                 hideComputerCard();
                 draftRounds--;
             } else if (draftRounds === 1) {
-                alert("The game has ended! Click 'Go back to start Page' to start a new game");
+                showModal("The game has ended! Click 'Go back to start Page' to start a new game");
             } else if (actualValue === 3 ) {
-                alert("The game has ended! Click 'Go back to start Page' to start a new game");
+                showModal("The game has ended! Click 'Go back to start Page' to start a new game");
             }
             else {
-                alert("You need to compare your Card first before you can draft your next card!");
+                showModal("You need to compare your Card first before you can draft your next card!");
             }
-
-        });       
+        });              
     }
 });
 
-// functions
-
-// using fisher yates shuffle algorithm for random shuffle of the cardData array 
+// functions 
+/**Fisher-Yates shuffle algorithm.
+ * @param {*} cards 
+ */
 function shuffleCards(cards) {
     for (let i = cards.length - 1; i > 0; i--) { 
         let j = Math.floor(Math.random() * (i + 1));
@@ -170,50 +188,51 @@ function shuffleCards(cards) {
 
 // compares the clicked stat in player card to computer card and pops of the top card of each
 // we need the pop off at the end because for the next round of comparing we target the next card via playerCards[playerCards.length-1] index
+
 function compare(stat, playerName) {
     if ( stat === "torque" ) {
-        if ( playerCards[playerCards.length-1].torque > computerCards[computerCards.length-1].torque ) {           
-            alert(playerName+ " wins round");
-            wrapper("score-count-player", stat);
+        if (playerCards[playerCards.length-1].torque > computerCards[computerCards.length-1].torque) {           
+            showModal(playerName+ " wins round");
+            wrapperCompare("score-count-player", stat);
         } else if ( playerCards[playerCards.length-1].torque == computerCards[computerCards.length-1].torque ) {
-            alert("Both cards have got the same Torque, please choose another stat to compare!");
+            showModal("Both cards have got the same Torque, please choose another stat to compare!");
         }
         else { 
-            alert("Computer wins round");
-            wrapper("score-count-computer", stat);
+            showModal("Computer wins round");
+            wrapperCompare("score-count-computer", stat);
         }
     } else if ( stat === "power") {
         if (playerCards[playerCards.length-1].power > computerCards[computerCards.length-1].power) {
-            alert(playerName+ " wins round");
-            wrapper("score-count-player", stat);
+            showModal(playerName+ " wins round");
+            wrapperCompare("score-count-player", stat);
         } else if ( playerCards[playerCards.length-1].power == computerCards[computerCards.length-1].power ) {
-            alert("Both cards have got the same Power, please choose another stat to compare!");
+            showModal("Both cards have got the same Power, please choose another stat to compare!");
         } 
         else {
-            alert("Computer wins round");
-            wrapper("score-count-computer", stat);
+            showModal("Computer wins round");
+            wrapperCompare("score-count-computer", stat);
         }
     } else if ( stat === "speed") {
         if (playerCards[playerCards.length-1].speed < computerCards[computerCards.length-1].speed) {
-            alert(playerName+ " wins round");
-            wrapper("score-count-player", stat);
+            showModal(playerName+ " wins round");
+            wrapperCompare("score-count-player", stat);
         } else if ( playerCards[playerCards.length-1].speed == computerCards[computerCards.length-1].speed ) {
-            alert("Both cards have got the same Speed, please choose another stat to compare!");
+            showModal("Both cards have got the same Speed, please choose another stat to compare!");
         } 
          else {
-            alert("Computer wins round");
-            wrapper("score-count-computer", stat);
+            showModal("Computer wins round");
+            wrapperCompare("score-count-computer", stat);
         }
     } else if ( stat === "rpm") {
         if (playerCards[playerCards.length-1].rpm > computerCards[computerCards.length-1].rpm) {
-            alert(playerName+ " wins round");
-            wrapper("score-count-player", stat);
+            showModal(playerName+ " wins round");
+            wrapperCompare("score-count-player", stat);
         } else if ( playerCards[playerCards.length-1].rpm == computerCards[computerCards.length-1].rpm ) {
-            alert("Both cards have got the same rpm, please choose another stat to compare!");
+            showModal("Both cards have got the same rpm, please choose another stat to compare!");
         }
          else {
-            alert("Computer wins round");
-            wrapper("score-count-computer", stat);
+            showModal("Computer wins round");
+            wrapperCompare("score-count-computer", stat);
         }
     } 
 }
@@ -271,19 +290,40 @@ function highlightComparedStats(stat) {
 }
 
 // unhighlighting the compared stats
-function unhighlightingComparedStats(stat) {
-    let statDivs = document.querySelectorAll('[data-stat-type="'+stat+'"]');
+function unhighlightingComparedStats() {
+    let statDivs = document.querySelectorAll('[data-stat-type');
     for (let comparedStat of statDivs) {
         comparedStat.classList.remove('red-highlight');
     }
 }
 
-// wrapper function
-function wrapper(winner, stat) {
+// wrapper for code inside compare()
+function wrapperCompare(winner, stat) {
     incrementScore(winner);
     showComputerCard(computerCards[computerCards.length-1]);
     discardPile = playerCards.pop();
     discardPile = computerCards.pop();
     compareRounds--;
     highlightComparedStats(stat);
+}
+
+// wrapper for modal showing
+function showModal(message) {
+    draftModalText.textContent = message;
+    draftModal.style.display = "block";
+}
+
+// Funktion zum Schließen des Modals
+function closeModal() {
+    draftModal.style.display = "none";
+}
+
+// wrapper for closeModal() for all closing tags in modals
+function wrapperCloseModal(){
+    document.querySelector(".close").addEventListener("click", closeModal);
+    window.addEventListener("click", function(event) {
+        if (event.target === draftModal) {
+            closeModal();
+        }
+    })
 }

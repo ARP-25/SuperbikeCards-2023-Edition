@@ -10,11 +10,22 @@
     </head>
 
     <body>
+
+        <!-- header logo -->
         <header class="align-center">
             <h1>Superbike Cards</h1>
             <h2 id="edition">2023 Edition</h2>
         </header>
 
+        <!-- modal -->
+        <div id="draftModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p id="draftModalText"></p>
+            </div>
+        </div>
+
+        <!-- instructions, player input, start game area -->
         <section class="align-center">           
             <div id="instructions">
                 <h2>Instructions:</h2>
@@ -30,7 +41,8 @@
             <input id="player-input" type="text" class="align-center" placeholder="Enter Player Name here"><br>           
             <button id="start-game" class="button">Start Game!</button>
         </section>
-
+        
+        <!-- script link -->
         <script src="assets/js/script.js"></script>        
     </body>
 </html>
