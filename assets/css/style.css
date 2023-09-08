@@ -233,7 +233,6 @@ footer {
 }
 
 /* modal */
-/* Modal styles (add these to your existing styles.css) */
 .modal {
     display: none;
     position: fixed;
@@ -250,7 +249,6 @@ footer {
     padding: 20px;
     border: 1px solid #888;
     width: 50%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
     position: relative;
 }

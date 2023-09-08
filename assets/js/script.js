@@ -1,39 +1,6 @@
 /*jshint esversion: 6 */
 
-// after dom elements are loaded we start to manipulate the elements
-
-document.addEventListener("DOMContentLoaded", function() {
-    // reveal elemend id="edition"
-    setTimeout(function() {
-        document.getElementById("edition").classList.add("show");
-    }, 1000); 
-
-    // listener for all moding closing tags
-    wrapperCloseModal();    
-
-    // when on index page execute following code in this function
-    if (document.getElementById("start-game")) {
-        document.getElementById("start-game").addEventListener("click", function() {
-
-        // start-game element gets click event listener which checks if player name was entered  
-        let playerInput = document.getElementById("player-input").value;
-        // if player name is entered and <= 10 characters we go to game.html
-        if ( (playerInput !== "") && (playerInput.length <= 10)) {
-            localStorage.setItem('playerName', playerInput);
-            console.log(playerInput);
-            window.location.href = "game.html";
-            
-        } else if (playerInput.length > 10) {
-            showModal("Use a maximum of ten characters for your Player Name!");
-        }
-        else {
-            showModal("Please enter your Player Name!");
-        }
-        });
-    }
-});
-
-// creating a object collection for the cards
+// card object array
 let cardData = [{ name: "Aprilia RSV4 1100", image: "assets/images/aprilia_rsv4.jpg", power: 217, torque: 122, speed: 2.7, rpm: 13600},
                 { name: "Ducati Panigale V2", image: "assets/images/ducati_panigale_v2.jpg", power: 155, torque: 104, speed: 3.2, rpm: 11500},
                 { name: "Ducati Panigale V4", image: "assets/images/ducati_panigale_v4.jpeg", power: 214, torque: 124, speed: 2.7, rpm: 15500},
@@ -45,23 +12,33 @@ let cardData = [{ name: "Aprilia RSV4 1100", image: "assets/images/aprilia_rsv4.
                 { name: "MV Agusta F4 RR", image: "assets/images/MV_Agusta_F4_RR.jpg", power:  201, torque: 111 , speed: 2.8, rpm: 13450},
                 { name: "Honda CBR1000RR FB", image: "assets/images/honda_cbr1000rr_fireblade.jpg", power: 214, torque: 116, speed: 2.8, rpm: 13000},];
 
-// creating two empty card arrays for player and computer
+// two empty card arrays for player and computer
 let playerCards = [];
 let computerCards = [];
-// emptry array for the popped of cards from the players
+
+// empty array for the popped of cards from the player/computer array
 let discardPile = [];
-// creating var for top card player
+
+// var top card player
 let topCard;
-// creating car for top card computer
+
+// var top card computer
 let topCardC;
+
 // creating var for recent compared stat div
 let recentComparedStat;
+
 // game cycles depending on cardData array elements stored in two different variables
 let compareRounds = (cardData.length/2);
 let draftRounds = (cardData.length/2);
 
 // ensuring random sequence in cardData array everytime script is executed
 shuffleCards(cardData);
+
+// get modal and modaltext
+let draftModalText = document.getElementById("draftModalText"); 
+let draftModal = document.getElementById("draftModal"); 
+
 
 // distributing the cards evenly into the arrays
 for (let i = 0; i < cardData.length; i++) {
@@ -72,13 +49,58 @@ for (let i = 0; i < cardData.length; i++) {
     }
 }
 
-// after dom elements are loaded we start to manipulate the elements
+
+/**
+ * Event listener for the DOMContentLoaded event.
+ * This function is executed when the DOM is fully loaded on index.html and ready for manipulation.
+ * function(): 
+ * Edition in header get revealed,
+ * Closing Tags in Modal get eventListener,
+ * Start Game Button gets eventListener
+ */
 document.addEventListener("DOMContentLoaded", function() {
 
-    // modasl implementation
-    // Get the draft modal element and its text content
-    const draftModal = document.getElementById("draftModal");
-    const draftModalText = document.getElementById("draftModalText");
+    // reveal elemend id="edition"
+    setTimeout(function() {
+        document.getElementById("edition").classList.add("show");
+    }, 1000); 
+
+    // listener for all modal closing tags
+    wrapperCloseModal();    
+
+    // when on index page execute following code 
+    if (document.getElementById("start-game")) {
+
+        // start-game element gets click event listener which checks if player name was entered
+        document.getElementById("start-game").addEventListener("click", function() {
+            let playerInput = document.getElementById("player-input").value;
+            // if player name is entered and <= 10 characters we go to game.html
+            if ( (playerInput !== "") && (playerInput.length <= 10)) {
+                localStorage.setItem('playerName', playerInput);
+                console.log(playerInput);
+                window.location.href = "game.html";           
+            } else if (playerInput.length > 10) {
+                showModal("Use a maximum of ten characters for your Player Name!");
+            }
+            else {
+                showModal("Please enter your Player Name!");
+            }
+            });
+        }
+
+});
+
+/**
+ * Event listener for the DOMContentLoaded event.
+ * This function is executed when the DOM is fully loaded on game.html and ready for manipulation.
+ * function(): 
+ * Player Name gets dispalyed in Score Area,
+ * Player first card gets displayed in Card Area,
+ * Elements of class="comparable" get eventListener,
+ * Elements of class="score" get MutationObserver,
+ * Element of id="draft-next-card" get eventListener,
+ */
+document.addEventListener("DOMContentLoaded", function() {
 
     // listener for all moding closing tags
     wrapperCloseModal();
@@ -115,14 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         }
-
-        // Close the draft modal when clicking outside of it
-        window.addEventListener("click", function(event) {
-            if (event.target === draftModal) {
-                draftModal.style.display = "none";
-            }
-        });
-             
+    
         // this variable will store always the most recent modified score
         let actualValue;
         // calling all elements of class "score"
@@ -150,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // starting to observe the object
         for (const scoreElement of scoreElements) {
             observer.observe(scoreElement, observerConfig);
-        };
+        }
         
         // onclick eventlistener for draftcardbutton
         let draftCardButton = document.getElementById("draft-next-card");
@@ -175,7 +190,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// functions 
+
+// seperate functions 
+
 /**Fisher-Yates shuffle algorithm.
  * @param {*} cards 
  */
@@ -186,9 +203,12 @@ function shuffleCards(cards) {
     }
 }
 
-// compares the clicked stat in player card to computer card and pops of the top card of each
-// we need the pop off at the end because for the next round of comparing we target the next card via playerCards[playerCards.length-1] index
 
+/**
+ * Compares the clicked stat.
+ * @param {*} stat Stat that got compared
+ * @param {*} playerName Player Name
+ */
 function compare(stat, playerName) {
     if ( stat === "torque" ) {
         if (playerCards[playerCards.length-1].torque > computerCards[computerCards.length-1].torque) {           
@@ -237,19 +257,25 @@ function compare(stat, playerName) {
     } 
 }
 
-// incrementing score
+/**
+ * Increments Score and displays it.
+ * @param {*} scorer Player who won the round
+ */
 function incrementScore(scorer) {
     document.getElementById(scorer).innerText++;
 }
 
-// showing card
+/**
+ * Shows Player Card.
+ * @param {*} card 
+ */
 function showCard(card) {
-    // code to show image of card
+    // show image and name of card
     let bikeImg = document.createElement("img");
     bikeImg.src = card.image; 
     bikeImg.alt = card.name; 
     document.getElementById("card-img-div").appendChild(bikeImg);
-    // code to show all stats of the card
+    // display all stats of the card, remove previous card image
     document.getElementById("bike-name").innerText = card.name;
     document.getElementById("card-img-div").removeChild(document.getElementById("card-img-div").firstChild);  
     document.getElementById("bike-power").innerText = card.power;
@@ -258,7 +284,10 @@ function showCard(card) {
     document.getElementById("bike-rpm").innerText = card.rpm;
 }
 
-// show computer card
+/**
+ * Shows Computer Card
+ * @param {*} card 
+ */
 function showComputerCard(card) {
     // manipulating computer-card div
     document.getElementById("computer-card").innerHTML = '<div id="card-name-div" class="card-name-style"><p><span id="bike-name-computer">Ducati</span></p></div><div id="card-img-div-computer" class="card-img-style"></div><div class="comparable card-stat-style" data-stat-type="power"><p>Power:</p> <span id="bike-power-computer">0</span><p> HP</p></div><div class="comparable card-stat-style" data-stat-type="torque"><p>Torque:</p> <span id="bike-torque-computer">0</span><p> Nm</p></div><div class="comparable card-stat-style" data-stat-type="speed"><p>0-100 km/h:</p> <span id="bike-speed-computer">0</span><p> s</p></div><div class="comparable card-stat-style" data-stat-type="rpm"><p>mRPM:</p> <span id="bike-rpm-computer">0</span><p> U/min</p></div>';
@@ -275,21 +304,28 @@ function showComputerCard(card) {
     document.getElementById("bike-rpm-computer").innerText = card.rpm;
 }
 
-// hiding computer card
+/**
+ * Hides Computer Card
+ */
 function hideComputerCard() {
     document.getElementById("computer-card").innerHTML = '<img src="assets/images/card_backside.jpg"></img>';
     document.getElementById("computer-card").alt = "Backside of the Computer Card";
 }
 
-// highlighting the compared stats
-function highlightComparedStats(stat) {
+/**
+ * Highlights the compared stat.
+ * @param {*} stat 
+ */
+function highlightComparedStat(stat) {
     let statDivs = document.querySelectorAll('[data-stat-type="'+stat+'"]');
     for (let comparedStat of statDivs) {
         comparedStat.classList.add('red-highlight');
     }
 }
 
-// unhighlighting the compared stats
+/**
+ * Unhighlights the compared stats.
+ */
 function unhighlightingComparedStats() {
     let statDivs = document.querySelectorAll('[data-stat-type');
     for (let comparedStat of statDivs) {
@@ -297,33 +333,44 @@ function unhighlightingComparedStats() {
     }
 }
 
-// wrapper for code inside compare()
+/**
+ * Wrapper Function in Compare Function.
+ * @param {*} winner Winner of the round
+ * @param {*} stat Stat which got compared
+ */
 function wrapperCompare(winner, stat) {
     incrementScore(winner);
     showComputerCard(computerCards[computerCards.length-1]);
     discardPile = playerCards.pop();
     discardPile = computerCards.pop();
     compareRounds--;
-    highlightComparedStats(stat);
+    highlightComparedStat(stat);
 }
 
-// wrapper for modal showing
+/**
+ * Wrapper Function for text content and display attribute of modal.
+ * @param {*} message Message that gets displayed
+ */
 function showModal(message) {
     draftModalText.textContent = message;
     draftModal.style.display = "block";
 }
 
-// Funktion zum Schließen des Modals
+/**
+ * Closing Modal
+ */
 function closeModal() {
     draftModal.style.display = "none";
 }
 
-// wrapper for closeModal() for all closing tags in modals
+/**
+ * Elements of class "close" get eventListener.
+ */
 function wrapperCloseModal(){
     document.querySelector(".close").addEventListener("click", closeModal);
     window.addEventListener("click", function(event) {
         if (event.target === draftModal) {
             closeModal();
         }
-    })
+    });
 }
